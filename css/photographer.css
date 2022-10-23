@@ -1,9 +1,15 @@
+:root {
+  --color1: #901C1C;
+  --color2: #D3573C;
+  --color3: #FAFAFA;
+  --color4: #525252;
+}
 #contact_modal {
     display: none;
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
+    background-color: var(--color3);
     height: 300px;
     margin: 0 100px;
 }
@@ -16,14 +22,14 @@
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: var(--color1);
     border-radius: 5px;
     cursor: pointer;
 }
 
 .modal {
     border-radius: 5px;
-    background-color: #DB8876;
+    background-color: var(--color2);
     width: 50%;
     display: flex;
     flex-direction: column;
