@@ -45,9 +45,12 @@ async function displayData(photographers) {
 
     const photographerModel = new Photographers(photographer);
     console.log(photographerModel);
+
     // const userCardDOM = photographerModel.getUserCardDOM();
-    // photographersSection.appendChild(userCardDOM);
-    
+    const userCardDOM = new PhotographersCard(photographerModel);
+    const photographerCardDOM = userCardDOM.createPhotographerCard();
+    console.log(photographerCardDOM);
+    photographersSection.appendChild(photographerCardDOM);
   });
 }
 
