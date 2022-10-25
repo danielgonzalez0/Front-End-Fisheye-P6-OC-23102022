@@ -18,7 +18,7 @@ async function displayData(photographers) {
   photographers.forEach((photographer) => {
     const photographerModel = new PhotographersFactory(
       photographer,
-      'photographers'
+      'json'
     );
     //console.log à supprimer
     console.log(photographerModel);
