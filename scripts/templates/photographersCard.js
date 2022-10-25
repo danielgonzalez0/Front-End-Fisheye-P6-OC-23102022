@@ -5,13 +5,15 @@ class PhotographersCard {
 
   createPhotographerCard() {
     const article = document.createElement('article');
-    const photographerCard = `          
+    const photographerCard = ` 
+    <a href="#" class="link-container" aria-label="page du photographe ${this._photographer.name}">         
       <img
         src="${this._photographer.portrait}"
-        alt="portrait de ${this._photographer.name}"
+        alt="image de profil de ${this._photographer.name}"
       />
-    <div class="text-container">
        <h2>${this._photographer.name}</h2>
+       </a>
+       <div class="text-container">
         <p class="photographer-city">${this._photographer.city}, ${this._photographer.country}</p>
         <p class="photographer-tagline">
         ${this._photographer.tagline}

@@ -14,22 +14,27 @@ body {
   box-sizing: border-box;
 }
 
+a,
+a:visited {
+  text-decoration: none;
+}
+
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 90px;
+  margin: 0 100px
 }
 
 h1 {
   color: var(--color1);
-  margin-right: 100px;
+  
 }
 
 .logo {
   height: 50px;
-  margin-left: 100px;
 }
 
 .photographer_section {
@@ -40,14 +45,17 @@ h1 {
 }
 
 .photographer_section article {
-  justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.photographer_section article h2 {
+.photographer_section .link-container {
+  width: 100%;
+}
+
+.photographer_section h2 {
   color: var(--color2);
   font-size: 36px;
   font-weight: 400;
@@ -57,10 +65,12 @@ h1 {
 }
 
 .photographer_section img {
+  display: block;
   height: 200px;
   width: 200px;
   border-radius: 200px;
   object-fit: cover;
+  margin: 0 auto;
 }
 
 .text-container .photographer-city {
