@@ -40,20 +40,11 @@ class PhotographersApi extends Api {
     const data = await this.getData();
     return data.photographers;
   }
-}
-/**
- * return API url 
- * @param {string} url: API url
- */
-class MediasApi extends Api {
-  constructor(url) {
-    super(url);
-  }
   /**
    * get all photographers medias data
    */
   async getMedias() {
     const data = await this.getData();
-    return data.medias;
+    return data.media;
   }
 }
