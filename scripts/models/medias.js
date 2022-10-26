@@ -41,15 +41,4 @@ class Medias {
       return `./assets/media/id_${this._photographerId}/${this._video}`;
     }
   }
-   getMedia(data) {
-    if (this._image) {
-      const mediaTemplate = new ImagesCard(data);
-      return mediaTemplate.createImageCard();
-    } else if (this._video) {
-      const mediaTemplate = new VideosCard(data);
-      return mediaTemplate.createVideoCard();
-    } else {
-      throw 'Unknown type format';
-    }
-  }
 }
