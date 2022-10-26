@@ -8,6 +8,10 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
     <title>Fisheye - photographe</title>
   </head>
   <body>
@@ -20,7 +24,39 @@
         />
       </a>
     </header>
-    <main id="main"></main>
+    <main id="main">
+      <div class="photograph-header"></div>
+      <section class="media">
+        <article>
+          <div class="img-container">
+            <img src="./assets/media/id_243/Animals_Rainbow.jpg" alt="titre" />
+          </div>
+          <div class="text-container">
+            <p class="titre">titre du media</p>
+            <span class="like"
+              >12
+              <i class="fa-solid fa-heart" aria-label="likes"></i>
+            </span>
+          </div>
+        </article>
+        <article>
+          <div class="img-container">
+            <video title="Wildlife" preload="auto" controls>
+              <source
+                src="./assets/media/id_243/Animals_Wild_Horses_in_the_mountains.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+          <div class="text-container">
+            <p class="titre">titre du media</p>
+            <span class="like"
+              >12 <i class="fa-solid fa-heart" aria-label="likes"></i
+            ></span>
+          </div>
+        </article>
+      </section>
+    </main>
     <div id="contact_modal">
       <div class="modal">
         <header>
@@ -42,6 +78,7 @@
     <script src="./scripts/models/medias.js" defer></script>
     <script src="./scripts/factories/photographersFactory.js" defer></script>
     <script src="./scripts/templates/photographerProfilCard.js" defer></script>
+    <script src="./scripts/templates/mediasCard.js" defer></script>
     <script src="/scripts/utils/contactForm.js" defer></script>
   </body>
 </html>

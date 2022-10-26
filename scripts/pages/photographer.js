@@ -3,7 +3,8 @@
 //DOM element
 //   const mediasData = photographers.getMedias();
 const photographerId = getId();
-const mainContainer = document.querySelector('#main');
+const ProfilContainer = document.querySelector('.photograph-header');
+const mediaSection = document.querySelector('.media');
 
 //function
 /**
@@ -50,14 +51,26 @@ async function displayData(array) {
     const userProfil = userProfilTemplate.createPhotographerProfilCard();
     //console.log à supprimer
     console.log(userProfil);
-    mainContainer.appendChild(userProfil)
+    ProfilContainer.appendChild(userProfil);
+  });
+}
+
+async function formatMediaData(array) {
+  array.forEach((index) => {
+    const mediaModel = new Medias(index);
+    const mediaTemplate = new MediasCard(mediaModel);
+    const media = mediaTemplate.createMediaCard();
+    console.log(mediaModel);
+    console.log(media);
+    mediaSection.appendChild(media);
   });
 }
 
 async function init() {
   const dataProfil = await getData('profil', photographerId);
   const dataMedia = await getData('media', photographerId);
-  const UserInfo = await displayData(dataProfil);
+  await displayData(dataProfil);
+  await formatMediaData(dataMedia);
   console.log(dataProfil);
   console.log(dataMedia);
 }

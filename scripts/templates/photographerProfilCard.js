@@ -5,7 +5,7 @@ class PhotographerProfilCard {
 
   createPhotographerProfilCard() {
     const div = document.createElement('div');
-    div.classList.add('photograph-header');
+    div.classList.add('photograph-profil');
     const photographerProfilCard = `
     <div class="text-container"> 
           <h1>${this._photographer.name}</h1>
