@@ -58,10 +58,7 @@ async function displayData(array) {
 async function formatMediaData(array) {
   array.forEach((index) => {
     const mediaModel = new Medias(index);
-    const mediaTemplate = new ImagesCard(mediaModel);
-    const media = mediaTemplate.createImageCard();
-    console.log(mediaModel);
-    console.log(media);
+    const media = mediaModel.getMedia(mediaModel)
     mediaSection.appendChild(media);
   });
 }

@@ -28,11 +28,28 @@ class Medias {
   get price() {
     return this._price;
   }
+  get image() {
+    return this._image;
+  }
+  get video() {
+    return this._video;
+  }
   get media() {
     if (this._image) {
       return `./assets/media/id_${this._photographerId}/${this._image}`;
     } else {
       return `./assets/media/id_${this._photographerId}/${this._video}`;
+    }
+  }
+   getMedia(data) {
+    if (this._image) {
+      const mediaTemplate = new ImagesCard(data);
+      return mediaTemplate.createImageCard();
+    } else if (this._video) {
+      const mediaTemplate = new VideosCard(data);
+      return mediaTemplate.createVideoCard();
+    } else {
+      throw 'Unknown type format';
     }
   }
 }
