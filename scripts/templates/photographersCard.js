@@ -6,7 +6,7 @@ class PhotographersCard {
   createPhotographerCard() {
     const article = document.createElement('article');
     const photographerCard = ` 
-    <a href="#" class="link-container" aria-label="page du photographe ${this._photographer.name}">         
+    <a href="./photographer.html?id=${this._photographer._id}" class="link-container" aria-label="page du photographe ${this._photographer.name}">         
       <img
         src="${this._photographer.portrait}"
         alt="image de profil de ${this._photographer.name}"
