@@ -47,4 +47,31 @@ class PhotographersApi extends Api {
     const data = await this.getData();
     return data.media;
   }
+/**
+ * return data from one specific photograh
+ * @param {string} id of a photograph
+ * @returns 
+ */
+  async getOnePhotographerProfil(id) {
+    const data = await this.getData();
+    const userArray = data.photographers;
+    const userData= userArray.filter((data) => {
+      return data.id === parseInt(id);
+    });
+    return userData;
+  }
+
+/**
+ * return medias from one specific photograh
+ * @param {string} id of a photograph
+ * @returns 
+ */
+  async getOnePhotographerMedias(id) {
+    const data = await this.getData();
+    const userArray = data.media;
+    const userMediaData= userArray.filter((data) => {
+      return data.photographerId === parseInt(id);
+    });
+    return userMediaData;
+  }
 }

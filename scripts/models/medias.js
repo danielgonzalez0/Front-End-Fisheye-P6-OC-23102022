@@ -34,11 +34,24 @@ class Medias {
   get video() {
     return this._video;
   }
+  get type() {
+    return this._image ? 'image' : 'video';
+  }
   get media() {
-    if (this._image) {
-      return `./assets/media/id_${this._photographerId}/${this._image}`;
+    return `./assets/media/id_${this._photographerId}/${
+      this._image ? this._image : this._video
+    }`;
+  }
+
+  getMediaTemplate() {
+    if (this.type === 'image') {
+      const mediaTemplate = new ImagesCard(this);
+      return mediaTemplate.createImageCard();
+    } else if (this.type === 'video') {
+      const mediaTemplate = new VideosCard(this);
+      return mediaTemplate.createVideoCard();
     } else {
-      return `./assets/media/id_${this._photographerId}/${this._video}`;
+      throw 'Unknown type format';
     }
   }
 }
