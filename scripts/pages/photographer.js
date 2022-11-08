@@ -8,7 +8,7 @@ const mediaSection = document.querySelector('.media');
 
 //function
 /**
- * return the id of from the url
+ * return the id from the url
  */
 function getId() {
   const url = window.location.search;

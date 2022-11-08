@@ -1,14 +1,14 @@
 /**
- * return API url 
+ * return API url
  * @param {string} url: API url
  */
 class Api {
   constructor(url) {
     this._url = url;
   }
-/**
- * get data from an API
- */
+  /**
+   * get data from an API
+   */
   async getData() {
     return (
       fetch(this._url)
@@ -26,7 +26,7 @@ class Api {
   }
 }
 /**
- * return API url 
+ * return API url
  * @param {string} url: API url
  */
 class PhotographersApi extends Api {
@@ -34,7 +34,7 @@ class PhotographersApi extends Api {
     super(url);
   }
   /**
-   * get all photographers information data 
+   * get all photographers information data
    */
   async getPhotographers() {
     const data = await this.getData();
