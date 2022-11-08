@@ -136,17 +136,112 @@ form input {
   border: none;
   border-radius: 5px;
 }
+/* ----------- section filter ------------- */
+.filter-container {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 10px 100px 0;
+  position: relative;
+}
+.label {
+  margin-right: 20px;
+  line-height: 69px;
+}
+.select-value {
+  font-family: 'DM Sans';
+  font-size: 18px;
+  font-weight: 700;
+  width: 170px;
+  height: 69px;
+  border-radius: 5px;
+  color: white;
+  background: #911c1c;
+  border: none;
+}
 
+/* ----- select container ---- */
+.select-container {
+  height: 170px;
+  width: 170px;
+  border-radius: 5px;
+  color: white;
+  background: #911c1c;
+  position: absolute;
+  top: 0;
+  left: 91px;
+  z-index: 1;
+}
+.select-list {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  display: grid;
+  position: relative;
+}
+.select-option {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  line-height: 56px;
+  padding: 0 20px;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.select-option:hover {
+  background: #db8876;
+  color: black;
+}
+.select-option:nth-of-type(n + 2)::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  content: '';
+  width: 80%;
+  height: 1px;
+  background: white;
+}
+.select-option:first-of-type {
+  border-radius: 5px 5px 0 0;
+}
+.select-option:last-of-type {
+  border-radius: 0 0 5px 5px;
+}
+
+.select-option:nth-of-type(1):hover ~ i {
+  color: black;
+}
+
+.select-container i {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: 0.3s ease-in-out;
+}
+
+.visible {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
 /* ----------- section media -------------- */
 .media {
   margin: 0 100px;
   display: grid;
   grid-template-columns: repeat(3, 350px);
   justify-content: space-between;
+  border: none;
 }
 
-.media article{
-margin: 30px 0;
+.media article {
+  margin: 30px 0;
 }
 
 .media .img-container {
@@ -172,8 +267,8 @@ margin: 30px 0;
   font-size: 24px;
   line-height: 31px;
 }
-.media .text-container .titre{
-  flex: 0 0 80%
+.media .text-container .titre {
+  flex: 0 0 80%;
 }
 
 .media .text-container .like {

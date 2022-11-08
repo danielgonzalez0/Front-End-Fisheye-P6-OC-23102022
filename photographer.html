@@ -26,6 +26,21 @@
     </header>
     <main id="main">
       <div class="photograph-header"></div>
+      <div class="filter-container">
+        <div class="label">Trier par</div>
+        <button class="select-value visible">
+          <span class="value-text" id="valueText">Popularité</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="select-container hidden">
+          <ul class="select-list">
+            <li class="select-option">Popularité</li>
+            <li class="select-option">Date</li>
+            <li class="select-option">Titre</li>
+            <i class="fa-solid fa-chevron-up"></i>
+          </ul>
+        </div>
+      </div>
       <section class="media"></section>
     </main>
     <div id="contact_modal">
@@ -53,5 +68,6 @@
     <script src="./scripts/templates/videosCard.js" defer></script>
     <script src="./scripts/factories/mediasFactory.js" defer></script>
     <script src="/scripts/utils/contactForm.js" defer></script>
+    <script src="/scripts/utils/filterForm.js" defer></script>
   </body>
 </html>
