@@ -5,17 +5,20 @@ const selectOption = document.querySelectorAll('.select-option');
 let filterValue = document.getElementById('valueText');
 const lastSelectOption = document.getElementById('listbox-3');
 
+// global functions
+function lastArrayIndex(array) {
+  return array.length - 1;
+}
+
 //listbox navigation functions
 
-function toggleFilterClass() {
-  filterBtn.classList.toggle('visible');
-  filterBtn.classList.toggle('hidden');
-  selectContainer.classList.toggle('visible');
-  selectContainer.classList.toggle('hidden');
+function toggleFilterClass(selector) {
+  selector.classList.toggle('visible');
+  selector.classList.toggle('hidden');
 }
-function addSelectedFilterValue(e) {
+function addSelectedFilterValue(e, selector) {
   let newFilterValue = e.target.innerHTML;
-  filterValue.innerHTML = newFilterValue;
+  selector.innerHTML = newFilterValue;
 }
 function updateAriaActiveDescendant(e) {
   let activeDescendantValue = e.target.id;
@@ -44,13 +47,15 @@ function ariaSelectedFalse(selector) {
 
 //listbox navigation events handling
 
-filterBtn.addEventListener('click', (e) => {
-  toggleFilterClass();
+filterBtn.addEventListener('click', () => {
+  toggleFilterClass(filterBtn);
+  toggleFilterClass(selectContainer);
   ariaExpandedTrue(filterBtn);
 });
 selectContainer.addEventListener('click', (e) => {
-  addSelectedFilterValue(e);
-  toggleFilterClass();
+  addSelectedFilterValue(e, filterValue);
+  toggleFilterClass(filterBtn);
+  toggleFilterClass(selectContainer);
   ariaExpandedFalse(filterBtn);
 });
 selectOption.forEach((index) => {
@@ -64,19 +69,23 @@ selectOption.forEach((index) => {
 });
 
 filterBtn.addEventListener('keydown', () => {
-  toggleFilterClass();
+  toggleFilterClass(filterBtn);
+  toggleFilterClass(selectContainer);
   ariaExpandedTrue(filterBtn);
 });
-lastSelectOption.addEventListener('keydown', (e) => {
+const lastIndex = lastArrayIndex(selectOption);
+selectOption[lastIndex].addEventListener('keydown', (e) => {
   if (e.code === 'Tab') {
-    toggleFilterClass();
+    toggleFilterClass(filterBtn);
+    toggleFilterClass(selectContainer);
     ariaExpandedFalse(filterBtn);
   }
 });
 selectContainer.addEventListener('keydown', (e) => {
   if (e.code === 'Enter') {
-    addSelectedFilterValue(e);
-    toggleFilterClass();
+    addSelectedFilterValue(e, filterValue);
+    toggleFilterClass(filterBtn);
+    toggleFilterClass(selectContainer);
     ariaExpandedFalse(filterBtn);
   }
 });
