@@ -26,21 +26,54 @@
     </header>
     <main id="main">
       <div class="photograph-header"></div>
+
       <div class="filter-container">
-        <div class="label">Trier par</div>
-        <button class="select-value visible">
+        <div class="label" aria-label="order by">Trier par</div>
+        <button
+          class="select-value visible"
+          role="button"
+          aria-labelledby="order by"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-activedescendant="listbox-1"
+        >
           <span class="value-text" id="valueText">Popularité</span>
           <i class="fa-solid fa-chevron-down"></i>
         </button>
         <div class="select-container hidden">
           <ul class="select-list">
-            <li class="select-option">Popularité</li>
-            <li class="select-option">Date</li>
-            <li class="select-option">Titre</li>
+            <li
+              class="select-option"
+              role="option"
+              id="listbox-1"
+              tabindex="0"
+              aria-selected="true"
+            >
+              Popularité
+            </li>
+            <li
+              class="select-option"
+              role="option"
+              id="listbox-2"
+              tabindex="0"
+              aria-selected="false"
+            >
+              Date
+            </li>
+            <li
+              class="select-option"
+              role="option"
+              id="listbox-3"
+              tabindex="0"
+              aria-selected="false"
+            >
+              Titre
+            </li>
             <i class="fa-solid fa-chevron-up"></i>
           </ul>
         </div>
       </div>
+
       <section class="media"></section>
     </main>
     <div id="contact_modal">
