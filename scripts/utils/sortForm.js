@@ -1,7 +1,7 @@
 //Dom elements
-const filterBtn = document.querySelector('.select-value');
+// const filterBtn = document.querySelector('.select-value');
 const selectContainer = document.querySelector('.select-container');
-const selectOption = document.querySelectorAll('.select-option');
+// const selectOption = document.querySelectorAll('.select-option');
 let filterValue = document.getElementById('valueText');
 const lastSelectOption = document.getElementById('listbox-3');
 
@@ -24,25 +24,14 @@ function updateAriaActiveDescendant(e) {
   let activeDescendantValue = e.target.id;
   filterBtn.setAttribute('aria-activedescendant', activeDescendantValue);
 }
-function updateAriaActiveDescendant(e) {
-  let activeDescendantValue = e.target.id;
-  filterBtn.setAttribute('aria-activedescendant', activeDescendantValue);
-}
-function ariaExpandedTrue(selector) {
+function ariaExpandedSetValue(selector, value) {
   selector.removeAttribute('aria-expanded');
-  selector.setAttribute('aria-expanded', true);
+  selector.setAttribute('aria-expanded', value);
 }
-function ariaExpandedFalse(selector) {
-  selector.removeAttribute('aria-expanded');
-  selector.setAttribute('aria-expanded', false);
-}
-function ariaSelectedTrue(selector) {
+
+function ariaSelectedSetValue(selector, value) {
   selector.removeAttribute('aria-selected');
-  selector.setAttribute('aria-selected', true);
-}
-function ariaSelectedFalse(selector) {
-  selector.removeAttribute('aria-selected');
-  selector.setAttribute('aria-selected', false);
+  selector.setAttribute('aria-selected', value);
 }
 
 //listbox navigation events handling
@@ -50,35 +39,36 @@ function ariaSelectedFalse(selector) {
 filterBtn.addEventListener('click', () => {
   toggleFilterClass(filterBtn);
   toggleFilterClass(selectContainer);
-  ariaExpandedTrue(filterBtn);
+  ariaExpandedSetValue(filterBtn, true);
 });
 selectContainer.addEventListener('click', (e) => {
   addSelectedFilterValue(e, filterValue);
   toggleFilterClass(filterBtn);
   toggleFilterClass(selectContainer);
-  ariaExpandedFalse(filterBtn);
+  ariaExpandedSetValue(filterBtn, false);
 });
 selectOption.forEach((index) => {
   index.addEventListener('click', (e) => {
     updateAriaActiveDescendant(e);
     selectOption.forEach((i) => {
-      ariaSelectedFalse(i);
+      ariaSelectedSetValue(i, false);
     });
-    ariaSelectedTrue(index);
+    ariaSelectedSetValue(index, true);
   });
 });
 
 filterBtn.addEventListener('keydown', () => {
   toggleFilterClass(filterBtn);
   toggleFilterClass(selectContainer);
-  ariaExpandedTrue(filterBtn);
+  ariaExpandedSetValue(filterBtn, true);
 });
 const lastIndex = lastArrayIndex(selectOption);
 selectOption[lastIndex].addEventListener('keydown', (e) => {
   if (e.code === 'Tab') {
+    e.preventDefault();
     toggleFilterClass(filterBtn);
     toggleFilterClass(selectContainer);
-    ariaExpandedFalse(filterBtn);
+    ariaExpandedSetValue(filterBtn, false);
   }
 });
 selectContainer.addEventListener('keydown', (e) => {
@@ -86,7 +76,7 @@ selectContainer.addEventListener('keydown', (e) => {
     addSelectedFilterValue(e, filterValue);
     toggleFilterClass(filterBtn);
     toggleFilterClass(selectContainer);
-    ariaExpandedFalse(filterBtn);
+    ariaExpandedSetValue(filterBtn, false);
   }
 });
 selectOption.forEach((index) => {
@@ -94,9 +84,9 @@ selectOption.forEach((index) => {
     if (e.code === 'Enter') {
       updateAriaActiveDescendant(e);
       selectOption.forEach((i) => {
-        ariaSelectedFalse(i);
+        ariaSelectedSetValue(i, false);
       });
-      ariaSelectedTrue(index);
+      ariaSelectedSetValue(index, true);
     }
   });
 });

@@ -4,6 +4,8 @@
 const photographerId = getId();
 const ProfilContainer = document.querySelector('.photograph-header');
 const mediaSection = document.querySelector('.media');
+const filterBtn = document.querySelector('.select-value');
+const selectOption = document.querySelectorAll('.select-option');
 
 //function
 /**
@@ -84,6 +86,26 @@ async function formatMediaData(array) {
   });
 }
 
+// ------------  sort functions -------------------
+
+/**
+ * clear all medias template of the page
+ */
+function clearMediasTemplate() {
+  while (mediaSection.firstChild) {
+    mediaSection.removeChild(mediaSection.firstChild);
+  }
+}
+/**
+ * create array with all medias of a photograph
+ */
+async function createArraySort() {
+  const dataMedia = await getData('media', photographerId);
+  const mediaArray = await mediasArrayCreation(dataMedia);
+  return mediaArray;
+}
+
+// -------------- init function -------------------
 async function init() {
   const dataProfil = await getData('profil', photographerId);
   const dataMedia = await getData('media', photographerId);
@@ -106,3 +128,31 @@ async function init() {
 
 // call functions
 init();
+console.log(document.querySelector('.select-value').outerText);
+
+// sort event handler
+selectOption.forEach((index) => {
+  index.addEventListener('click', async () => {
+    clearMediasTemplate();
+    const sortArray = await createArraySort();
+    const sorterType = index.attributes['data-value'].value;
+    await sorter(sortArray, sorterType);
+    await formatMediaData(sortArray);
+    console.log(sortArray);
+    console.log(sorterType);
+  });
+});
+
+selectOption.forEach((index) => {
+  index.addEventListener('keydown', async (e) => {
+    if (e.code === 'Enter') {
+      clearMediasTemplate();
+      const sortArray = await createArraySort();
+      const sorterType = index.attributes['data-value'].value;
+      await sorter(sortArray, sorterType);
+      await formatMediaData(sortArray);
+      console.log(sortArray);
+      console.log(sorterType);
+    }
+  });
+});
