@@ -117,14 +117,28 @@ async function init() {
 
   //counter like logic init
 
+  //count all the like of a phograph in json data
   const counterLike = await totalLikeInit(mediaArray);
+//add the total of like in the localStorage 
+  const photographerInit = `${photographerId}_init`;
+  if (localStorage.getItem(photographerInit)) {
+    localStorage.removeItem(photographerInit);
+    localStorage.setItem(photographerInit, parseInt(counterLike));
+  } else {
+    localStorage.setItem(photographerInit, parseInt(counterLike));
+  }
+  //add this total in the html element
   const totalLikeContainer = document.getElementById('counterLike');
-  totalLikeContainer.textContent = counterLike;
-  console.log(counterLike);
-
+  if (localStorage.getItem(photographerId)) {
+    totalLikeContainer.textContent =
+      counterLike + parseInt(localStorage.getItem(photographerId));
+  } else {
+        totalLikeContainer.textContent = counterLike;
+  }
+  //
   await logLike();
-  //counter like for one photograph
 
+  //counter like for one photograph
   // console.log('----step1: get photograph id-----');
   // console.log(photographerId);
   // console.log('----step2: get photograph profil data-----');
@@ -170,4 +184,3 @@ selectOption.forEach((index) => {
 });
 
 console.log(mediaSection);
-

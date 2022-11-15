@@ -1,0 +1,20 @@
+{
+  "name": "front-end-fisheye-p6-oc-23102022",
+  "version": "1.0.0",
+  "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielgonzalez0/Front-End-Fisheye-P6-OC-23102022.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielgonzalez0/Front-End-Fisheye-P6-OC-23102022/issues"
+  },
+  "homepage": "https://github.com/danielgonzalez0/Front-End-Fisheye-P6-OC-23102022#readme"
+}
