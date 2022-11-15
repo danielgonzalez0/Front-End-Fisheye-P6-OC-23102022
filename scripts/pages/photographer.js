@@ -6,6 +6,7 @@ const ProfilContainer = document.querySelector('.photograph-header');
 const mediaSection = document.querySelector('.media');
 const filterBtn = document.querySelector('.select-value');
 const selectOption = document.querySelectorAll('.select-option');
+let counterPhotoLikedByPhotographer = 0;
 
 //function
 /**
@@ -114,6 +115,16 @@ async function init() {
   await displayProfilData(photographerProfil);
   await formatMediaData(mediaArray);
 
+  //counter like logic init
+
+  const counterLike = await totalLikeInit(mediaArray);
+  const totalLikeContainer = document.getElementById('counterLike');
+  totalLikeContainer.textContent = counterLike;
+  console.log(counterLike);
+
+  await logLike();
+  //counter like for one photograph
+
   // console.log('----step1: get photograph id-----');
   // console.log(photographerId);
   // console.log('----step2: get photograph profil data-----');
@@ -121,14 +132,13 @@ async function init() {
   // console.log('----step3: get photograph medias data-----');
   // console.log(dataMedia);
   // console.log('----step4: get photograph medias array-----');
-  // console.log(mediaArray);
+  // console.log(parseInt(mediaArray[0]._likes));
   // console.log('----step5: get photograph profil array-----');
   // console.log(photographerProfil);
 }
 
 // call functions
 init();
-console.log(document.querySelector('.select-value').outerText);
 
 // sort event handler
 selectOption.forEach((index) => {
@@ -138,6 +148,7 @@ selectOption.forEach((index) => {
     const sorterType = index.attributes['data-value'].value;
     await sorter(sortArray, sorterType);
     await formatMediaData(sortArray);
+    await logLike();
     console.log(sortArray);
     console.log(sorterType);
   });
@@ -151,8 +162,12 @@ selectOption.forEach((index) => {
       const sorterType = index.attributes['data-value'].value;
       await sorter(sortArray, sorterType);
       await formatMediaData(sortArray);
+      await logLike();
       console.log(sortArray);
       console.log(sorterType);
     }
   });
 });
+
+console.log(mediaSection);
+

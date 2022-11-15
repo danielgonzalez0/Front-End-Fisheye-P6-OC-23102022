@@ -83,6 +83,21 @@
   transform: translate(-50%, -50%);
 }
 
+.popinInfo {
+  width: 376px;
+  height: 89px;
+  background-color: #db8876;
+  position: fixed;
+  bottom: 0;
+  right: 36px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
 .modal {
   border-radius: 5px;
   background-color: var(--color2);
@@ -274,8 +289,40 @@ form input {
 .media .text-container .like {
   font-weight: 600;
   font-size: 20px;
+  display: flex;
 }
 
-.media .text-container .like i {
+.likeBtn {
+  position: relative;
+  border: none;
+  background: none;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  color: var(--color1);
+}
+
+.likeBtn:focus-visible {
+  outline: solid 3px rgba(0, 81, 255, 0.681);
+  background-color: white;
+  color: var(--color1);
+}
+
+.media .text-container i {
   cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.likeEmpty,
+.likeFull {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  transition: 0.3s ease forwards;
+  transform: scale(0);
+}
+
+.active {
+  transform: scale(1);
 }
