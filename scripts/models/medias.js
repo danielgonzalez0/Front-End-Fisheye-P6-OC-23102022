@@ -1,4 +1,6 @@
-class Medias {
+import { ImagesCard } from "../templates/imagesCard.js";
+import { VideosCard } from "../templates/videosCard.js";
+export class Medias {
   constructor(data) {
     this._id = data.id;
     this._photographerId = data.photographerId;

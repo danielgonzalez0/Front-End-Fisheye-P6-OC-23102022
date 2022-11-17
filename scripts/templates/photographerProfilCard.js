@@ -1,4 +1,4 @@
-class PhotographerProfilCard {
+export class PhotographerProfilCard {
   constructor(photographer) {
     this._photographer = photographer;
   }

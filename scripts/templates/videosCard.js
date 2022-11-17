@@ -1,4 +1,4 @@
-class VideosCard {
+export class VideosCard {
   constructor(media) {
     this._media = media;
   }

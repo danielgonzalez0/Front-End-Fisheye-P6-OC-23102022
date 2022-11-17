@@ -1,5 +1,9 @@
 //Dom elements
 // const filterBtn = document.querySelector('.select-value');
+import { filterBtn } from "../pages/photographer.js";
+import { selectOption } from "../pages/photographer.js";
+
+
 const selectContainer = document.querySelector('.select-container');
 // const selectOption = document.querySelectorAll('.select-option');
 let filterValue = document.getElementById('valueText');

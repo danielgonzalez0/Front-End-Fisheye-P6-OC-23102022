@@ -29,7 +29,7 @@ class Api {
  * return API url
  * @param {string} url: API url
  */
-class PhotographersApi extends Api {
+export class PhotographersApi extends Api {
   constructor(url) {
     super(url);
   }

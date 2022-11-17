@@ -1,3 +1,7 @@
+import { PhotographersApi } from '../api/api.js';
+import {PhotographersFactory} from '../factories/photographersFactory.js'
+import {PhotographersCard} from '../templates/photographersCard.js'
+
 /**
  * create an array with all the photographers data
  * @param {array} array with the photographers list from the API

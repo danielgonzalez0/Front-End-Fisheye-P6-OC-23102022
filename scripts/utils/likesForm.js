@@ -3,7 +3,7 @@
  * return the sum of the key _likes in a array
  * @param {array} array
  */
-async function totalLikeInit(array) {
+export async function totalLikeInit(array) {
   let counter = 0;
   array.forEach((index) => {
     const nbLike = parseInt(index._likes);
@@ -42,6 +42,7 @@ async function addLikeByPhotographer() {
   }
 }
 
+import{ photographerId} from '../pages/photographer.js'
 /**
  * remove a like on the photographer counter in the localstorage
  */
@@ -60,7 +61,7 @@ async function removeLikeByPhotographer() {
 /**
  * logic of like btn at the eventListner on click
  */
-async function logLike() {
+export async function logLike() {
   //DOM
   const likes = document.querySelectorAll('.likeBtn');
 

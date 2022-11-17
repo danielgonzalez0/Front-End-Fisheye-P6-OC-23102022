@@ -1,4 +1,4 @@
-class Photographers {
+export class Photographers {
   // ajout constuctor
   constructor(data) {
     this._name = data.name;

@@ -1,12 +1,20 @@
 //Mettre le code JavaScript lié à la page photographer.html
+import { PhotographersApi } from '../api/api.js';
+import { MediasFactory } from '../factories/mediasFactory.js';
+import { PhotographersFactory } from '../factories/photographersFactory.js';
+import { PhotographerProfilCard } from '../templates/photographerProfilCard.js';
+import { totalLikeInit } from '../utils/likesForm.js';
+import { logLike } from '../utils/likesForm.js';
+import { sorter } from '../utils/sortFunction.js';
 
 //DOM element
-const photographerId = getId();
+export const photographerId = getId();
 const ProfilContainer = document.querySelector('.photograph-header');
 const mediaSection = document.querySelector('.media');
-const filterBtn = document.querySelector('.select-value');
-const selectOption = document.querySelectorAll('.select-option');
+export const filterBtn = document.querySelector('.select-value');
+export const selectOption = document.querySelectorAll('.select-option');
 let counterPhotoLikedByPhotographer = 0;
+let counterLike = 0;
 
 //function
 /**
@@ -118,8 +126,8 @@ async function init() {
   //counter like logic init
 
   //count all the like of a phograph in json data
-  const counterLike = await totalLikeInit(mediaArray);
-//add the total of like in the localStorage 
+  counterLike = await totalLikeInit(mediaArray);
+  //add the total of like in the localStorage
   const photographerInit = `${photographerId}_init`;
   if (localStorage.getItem(photographerInit)) {
     localStorage.removeItem(photographerInit);
@@ -133,7 +141,7 @@ async function init() {
     totalLikeContainer.textContent =
       counterLike + parseInt(localStorage.getItem(photographerId));
   } else {
-        totalLikeContainer.textContent = counterLike;
+    totalLikeContainer.textContent = counterLike;
   }
   //
   await logLike();

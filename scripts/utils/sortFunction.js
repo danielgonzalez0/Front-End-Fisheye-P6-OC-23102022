@@ -3,7 +3,7 @@
  * @param {array} array of all medias from a photographer
  * @param {string} type of the sort function
  */
-async function sorter(array, type) {
+export async function sorter(array, type) {
   switch (type) {
     case 'popularity':
       array.sort(function (a, b) {
