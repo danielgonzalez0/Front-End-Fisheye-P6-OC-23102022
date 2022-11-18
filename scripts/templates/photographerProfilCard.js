@@ -19,13 +19,6 @@ export class PhotographerProfilCard {
           src="${this._photographer.portrait}"
           alt="photo de profil de ${this._photographer.name}"
         />
-        <div class="popinInfo">
-        <div>
-          <span id="counterLike">20000</span>
-          <i class="fa-solid fa-heart"></i>
-          </div>
-          <span>${this._photographer.price}€ / jour</span>
-        </div>
       </div>
     `;
     div.innerHTML = photographerProfilCard;

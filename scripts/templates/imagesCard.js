@@ -15,19 +15,19 @@ export class ImagesCard {
           </div>
           <div class="text-container">
             <p class="titre">${this._media.title}</p>
-            <span class="like"
+            <span class="like" data-likeId= ${this._media.id}
               >${
                 this._media.likes +
                 (likeStoreCheck ? parseInt(likeStoreCheck) : 0)
               }
               </span>
-              <button class="likeBtn">
+              <button class="likeBtn" data-mediaId= ${this._media.id}>
               <i class="fa-solid fa-heart likeFull ${
                 likeStoreCheck ? 'active' : ''
-              }" aria-label="likes"></i>
+              }" data-mediaId= ${this._media.id} aria-label="likes"></i>
               <i class="fa-regular fa-heart likeEmpty ${
                 likeStoreCheck ? '' : 'active'
-              }" aria-label="unlike"></i>
+              }" data-mediaId= ${this._media.id} aria-label="unlike"></i>
               </button>
           </div>
    `;

@@ -4,7 +4,8 @@ import { MediasFactory } from '../factories/mediasFactory.js';
 import { PhotographersFactory } from '../factories/photographersFactory.js';
 import { PhotographerProfilCard } from '../templates/photographerProfilCard.js';
 import { totalLikeInit } from '../utils/likesForm.js';
-import { logLike } from '../utils/likesForm.js';
+import { totalLikePhotographInit } from '../utils/likesForm.js';
+import { likeMedia } from '../utils/likesForm.js';
 import { sorter } from '../utils/sortFunction.js';
 
 //DOM element
@@ -13,8 +14,9 @@ const ProfilContainer = document.querySelector('.photograph-header');
 const mediaSection = document.querySelector('.media');
 export const filterBtn = document.querySelector('.select-value');
 export const selectOption = document.querySelectorAll('.select-option');
-let counterPhotoLikedByPhotographer = 0;
-let counterLike = 0;
+export const totalLikeContainer = document.getElementById('counterLike');
+const priceContainer = document.getElementById('price');
+export let counterLike = 0;
 
 //function
 /**
@@ -122,29 +124,14 @@ async function init() {
   const photographerProfil = await ProfilArrayCreation(dataProfil);
   await displayProfilData(photographerProfil);
   await formatMediaData(mediaArray);
+  priceContainer.textContent = `${photographerProfil[0]._price} € / jour`;
 
   //counter like logic init
 
   //count all the like of a phograph in json data
   counterLike = await totalLikeInit(mediaArray);
-  //add the total of like in the localStorage
-  const photographerInit = `${photographerId}_init`;
-  if (localStorage.getItem(photographerInit)) {
-    localStorage.removeItem(photographerInit);
-    localStorage.setItem(photographerInit, parseInt(counterLike));
-  } else {
-    localStorage.setItem(photographerInit, parseInt(counterLike));
-  }
-  //add this total in the html element
-  const totalLikeContainer = document.getElementById('counterLike');
-  if (localStorage.getItem(photographerId)) {
-    totalLikeContainer.textContent =
-      counterLike + parseInt(localStorage.getItem(photographerId));
-  } else {
-    totalLikeContainer.textContent = counterLike;
-  }
-  //
-  await logLike();
+  await totalLikePhotographInit(counterLike);
+  await likeMedia();
 
   //counter like for one photograph
   // console.log('----step1: get photograph id-----');
@@ -156,7 +143,6 @@ async function init() {
   // console.log('----step4: get photograph medias array-----');
   // console.log(parseInt(mediaArray[0]._likes));
   // console.log('----step5: get photograph profil array-----');
-  // console.log(photographerProfil);
 }
 
 // call functions
@@ -171,8 +157,6 @@ selectOption.forEach((index) => {
     await sorter(sortArray, sorterType);
     await formatMediaData(sortArray);
     await logLike();
-    console.log(sortArray);
-    console.log(sorterType);
   });
 });
 
@@ -185,8 +169,6 @@ selectOption.forEach((index) => {
       await sorter(sortArray, sorterType);
       await formatMediaData(sortArray);
       await logLike();
-      console.log(sortArray);
-      console.log(sorterType);
     }
   });
 });
