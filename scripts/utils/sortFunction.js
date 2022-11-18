@@ -1,7 +1,7 @@
 /**
  * sort the medias array order by a specific type parameter
  * @param {array} array of all medias from a photographer
- * @param {string} type of the sort function
+ * @param {string} type of the sort function: popularity, title, date
  */
 export async function sorter(array, type) {
   switch (type) {

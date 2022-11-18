@@ -26,13 +26,12 @@ async function displayData(photographers) {
     const userCardDOM = new PhotographersCard(photographer);
     const photographerCardDOM = userCardDOM.createPhotographerCard();
     photographersSection.appendChild(photographerCardDOM);
-    //test => console.log
-    // console.log('---step4----');
-    // console.log('---create html template----');
-    // console.log(photographerCardDOM);
   });
 }
 
+/**
+ * initialization of the page index
+ */
 async function init() {
   const photographers = new PhotographersApi('./data/photographers.json');
   const photographersData = await photographers.getPhotographers();

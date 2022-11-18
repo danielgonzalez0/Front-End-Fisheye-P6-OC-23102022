@@ -1,4 +1,6 @@
 //Mettre le code JavaScript lié à la page photographer.html
+
+//import
 import { PhotographersApi } from '../api/api.js';
 import { MediasFactory } from '../factories/mediasFactory.js';
 import { PhotographersFactory } from '../factories/photographersFactory.js';
@@ -19,6 +21,7 @@ const priceContainer = document.getElementById('price');
 export let counterLike = 0;
 
 //function
+
 /**
  * return the id from the url
  */
@@ -61,7 +64,7 @@ async function mediasArrayCreation(array) {
 }
 
 /**
- * creates an array with all data of a photograph
+ * creates an array with all data information of a photograph
  * @param {array} array with all data from one photograph
  * @returns
  */
@@ -108,7 +111,7 @@ function clearMediasTemplate() {
   }
 }
 /**
- * create array with all medias of a photograph
+ * get photographer datas & creates an array with all medias of this photographer
  */
 async function createArraySort() {
   const dataMedia = await getData('media', photographerId);
@@ -117,7 +120,12 @@ async function createArraySort() {
 }
 
 // -------------- init function -------------------
+
+/**
+ * initialization of the photographer page
+ */
 async function init() {
+  //gets all datas, creates arrays to store datas, display datas in html templates
   const dataProfil = await getData('profil', photographerId);
   const dataMedia = await getData('media', photographerId);
   const mediaArray = await mediasArrayCreation(dataMedia);
@@ -126,9 +134,7 @@ async function init() {
   await formatMediaData(mediaArray);
   priceContainer.textContent = `${photographerProfil[0]._price} € / jour`;
 
-  //counter like logic init
-
-  //count all the like of a phograph in json data
+  //count all the like of a phograph in json data, display likes logic
   counterLike = await totalLikeInit(mediaArray);
   await totalLikePhotographInit(counterLike);
   await likeMedia();
