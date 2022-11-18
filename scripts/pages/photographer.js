@@ -162,7 +162,7 @@ selectOption.forEach((index) => {
     const sorterType = index.attributes['data-value'].value;
     await sorter(sortArray, sorterType);
     await formatMediaData(sortArray);
-    await logLike();
+    await likeMedia();
   });
 });
 
@@ -174,7 +174,7 @@ selectOption.forEach((index) => {
       const sorterType = index.attributes['data-value'].value;
       await sorter(sortArray, sorterType);
       await formatMediaData(sortArray);
-      await logLike();
+      await likeMedia();
     }
   });
 });
