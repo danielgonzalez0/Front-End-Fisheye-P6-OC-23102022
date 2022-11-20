@@ -10,8 +10,8 @@ export class VideosCard {
     );
     article.setAttribute('id', `${this._media.id}`);
     const videoCard = ` 
-              <div class="img-container">
-            <video title="${this._media.title}" preload="auto" controls>
+              <div class="img-container carousel-link">
+            <video title="${this._media.title}" tabindex="0">
               <source
                 src="${this._media.media}"
                 type="video/mp4"
@@ -39,5 +39,33 @@ export class VideosCard {
    `;
     article.innerHTML = videoCard;
     return article;
+  }
+
+  createVideoCarousel() {
+    const div = document.createElement('div');
+    div.classList.add('lightbox-container');
+    div.setAttribute('data-carouselId', `${this._media.id}`);
+    const imgCarousel = `
+    <button class="close-carousel">
+           <i class="fa-solid fa-xmark"></i>
+         </button>
+         <!-- Next/previous controls -->
+        <div class="img-container">
+         <video
+              <source
+                src="${this._media.media}"
+                type="video/mp4"
+                alt="${this._media.title}"
+                controls
+              />
+          ></video>
+         </div>
+         <div class="carousel-text">${this._media.title}</div>
+         <a href="#" class="arrow-prev">&#10094;</a>
+         <a href="#" class="arrow-next">&#10095;</a>
+      </div>
+    `;
+    div.innerHTML = imgCarousel;
+    return div;
   }
 }

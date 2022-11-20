@@ -7,12 +7,11 @@
   --color4: #525252;
 }
 
-*:focus-visible{
+*:focus-visible {
   outline: solid 3px rgba(0, 81, 255, 0.681);
   background: #db8876;
   color: black;
 }
-
 
 body {
   font-family: 'DM Sans', sans-serif;
@@ -32,12 +31,11 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
-  margin: 0 100px
+  margin: 0 100px;
 }
 
 h1 {
   color: var(--color1);
-  
 }
 
 .logo {
@@ -104,3 +102,4 @@ h1 {
   margin: 0;
   color: var(--color4);
 }
+

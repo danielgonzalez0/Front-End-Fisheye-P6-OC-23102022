@@ -10,8 +10,10 @@ export class ImagesCard {
     );
     article.setAttribute('id', `${this._media.id}`);
     const imageCard = ` 
-              <div class="img-container">
-            <img src="${this._media.media}" alt="${this._media.title}" />
+              <div class="img-container carousel-link">
+            <img src="${this._media.media}" alt="${
+      this._media.title
+    }" tabindex="0"/>
           </div>
           <div class="text-container">
             <p class="titre">${this._media.title}</p>
@@ -33,5 +35,26 @@ export class ImagesCard {
    `;
     article.innerHTML = imageCard;
     return article;
+  }
+
+  createImgCarousel() {
+    const div = document.createElement('div');
+    div.classList.add("lightbox-container");
+    div.setAttribute('data-carouselId', `${this._media.id}`);
+    const imgCarousel = `
+    <button class="close-carousel">
+           <i class="fa-solid fa-xmark"></i>
+         </button>
+         <!-- Next/previous controls -->
+        <div class="img-container">
+          <img src="${this._media.media}" alt="${this._media.title}"/>
+         </div>
+         <div class="carousel-text">${this._media.title}</div>
+         <a href="#" class="arrow-prev">&#10094;</a>
+         <a href="#" class="arrow-next">&#10095;</a>
+      </div>
+    `;
+    div.innerHTML = imgCarousel;
+    return div;
   }
 }

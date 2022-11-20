@@ -1,5 +1,5 @@
-import { ImagesCard } from "../templates/imagesCard.js";
-import { VideosCard } from "../templates/videosCard.js";
+import { ImagesCard } from '../templates/imagesCard.js';
+import { VideosCard } from '../templates/videosCard.js';
 export class Medias {
   constructor(data) {
     this._id = data.id;
@@ -52,6 +52,18 @@ export class Medias {
     } else if (this.type === 'video') {
       const mediaTemplate = new VideosCard(this);
       return mediaTemplate.createVideoCard();
+    } else {
+      throw 'Unknown type format';
+    }
+  }
+
+  getMediaCarousel() {
+    if (this.type === 'image') {
+      const mediaTemplate = new ImagesCard(this);
+      return mediaTemplate.createImgCarousel();
+    } else if (this.type === 'video') {
+      const mediaTemplate = new VideosCard(this);
+      return mediaTemplate.createVideoCarousel();
     } else {
       throw 'Unknown type format';
     }

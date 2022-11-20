@@ -9,6 +9,9 @@ import { totalLikeInit } from '../utils/likesForm.js';
 import { totalLikePhotographInit } from '../utils/likesForm.js';
 import { likeMedia } from '../utils/likesForm.js';
 import { sorter } from '../utils/sortFunction.js';
+import { carouselModal } from '../utils/carousel.js';
+import { carouselClose, carouselOpen } from '../utils/carousel.js';
+import { formatMediaCarousel } from '../utils/carousel.js';
 
 //DOM element
 export const photographerId = getId();
@@ -103,11 +106,12 @@ async function formatMediaData(array) {
 // ------------  sort functions -------------------
 
 /**
- * clear all medias template of the page
+ * clear all media templates of a specific selector
+ * @param {DOM element} selector represents the parent element of the templates
  */
-function clearMediasTemplate() {
-  while (mediaSection.firstChild) {
-    mediaSection.removeChild(mediaSection.firstChild);
+function clearMediasTemplate(selector) {
+  while (selector.firstChild) {
+    selector.removeChild(selector.firstChild);
   }
 }
 /**
@@ -139,6 +143,12 @@ async function init() {
   await totalLikePhotographInit(counterLike);
   await likeMedia();
 
+  //init carousel data
+  const carouselArray = mediaArray;
+  await carouselOpen();
+  await formatMediaCarousel(carouselArray);
+  await carouselClose();
+
   //counter like for one photograph
   // console.log('----step1: get photograph id-----');
   // console.log(photographerId);
@@ -157,24 +167,32 @@ init();
 // sort event handler
 selectOption.forEach((index) => {
   index.addEventListener('click', async () => {
-    clearMediasTemplate();
+    clearMediasTemplate(mediaSection);
+    clearMediasTemplate(carouselModal);
     const sortArray = await createArraySort();
     const sorterType = index.attributes['data-value'].value;
     await sorter(sortArray, sorterType);
     await formatMediaData(sortArray);
     await likeMedia();
+    await formatMediaCarousel(sortArray);
+    await carouselOpen();
+    await carouselClose();
   });
 });
 
 selectOption.forEach((index) => {
   index.addEventListener('keydown', async (e) => {
     if (e.code === 'Enter') {
-      clearMediasTemplate();
+      clearMediasTemplate(mediaSection);
+      clearMediasTemplate(carouselModal);
       const sortArray = await createArraySort();
       const sorterType = index.attributes['data-value'].value;
       await sorter(sortArray, sorterType);
       await formatMediaData(sortArray);
       await likeMedia();
+      await formatMediaCarousel(sortArray);
+      await carouselOpen();
+      await carouselClose();
     }
   });
 });

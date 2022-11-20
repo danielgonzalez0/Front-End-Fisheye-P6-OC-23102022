@@ -14,7 +14,9 @@
     />
     <title>Fisheye - photographe</title>
   </head>
+
   <body>
+    <!-- header -->
     <header role="banner">
       <a href="./index.html" aria-label="page d'acceuil Fisheye">
         <img
@@ -24,9 +26,12 @@
         />
       </a>
     </header>
+
+    <!-- main  -->
     <main id="main">
       <div class="photograph-header"></div>
 
+      <!-- filter -->
       <div class="filter-container">
         <div class="label" aria-label="order by">Trier par</div>
         <button
@@ -77,8 +82,11 @@
         </div>
       </div>
 
+      <!-- media section -->
       <section class="media"></section>
     </main>
+
+    <!-- modal section -->
     <div id="contact_modal">
       <div class="modal">
         <header>
@@ -94,13 +102,42 @@
         </form>
       </div>
     </div>
-     <div class="popinInfo">
-        <div class="popinInfoLike">
-          <span id="counterLike"></span>
-          <i class="fa-solid fa-heart"></i>
-          </div>
-          <span id="price">250 € / jour</span>
+
+    <!-- popin info -->
+    <div class="popinInfo">
+      <div class="popinInfoLike">
+        <span id="counterLike"></span>
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <span id="price">250 € / jour</span>
+    </div>
+
+    <!-- ligthbox modal  -->
+    <div id="lightbox-modal" class="hidden">
+      <!--<div class="lightbox-container">
+        <button class="close-carousel">
+          <i class="fa-solid fa-xmark"></i>
+        </button> -->
+      <!-- Next/previous controls -->
+      <!-- <div class="img-container">
+          <img
+            src="./assets/media/id_195/Architecture_Contrast.jpg"
+            alt="test"
+          />
+          <video
+            src="./assets/media/id_195/Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4"
+            controls
+            type="video/mp4"
+          ></video>
         </div>
+        <div class="carousel-text">titre du media</div>
+        <a href="#" class="arrow-prev">&#10094;</a>
+        <a href="#" class="arrow-next">&#10095;</a>
+      </div> -->
+    </div>
+
+    <!-- javascript -->
+
     <script type="module" src="/scripts/api/api.js" defer></script>
     <script type="module" src="/scripts/pages/photographer.js" defer></script>
     <script
@@ -138,5 +175,6 @@
     <script type="module" src="/scripts/utils/sortForm.js" defer></script>
     <script type="module" src="/scripts/utils/sortFunction.js" defer></script>
     <script type="module" src="/scripts/utils/likesForm.js" defer></script>
+    <script type="module" src="./scripts/utils/carousel.js" defer></script>
   </body>
 </html>
