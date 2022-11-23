@@ -9,7 +9,7 @@ import { totalLikeInit } from '../utils/likesForm.js';
 import { totalLikePhotographInit } from '../utils/likesForm.js';
 import { likeMedia } from '../utils/likesForm.js';
 import { sorter } from '../utils/sortFunction.js';
-import { carouselModal } from '../utils/carousel.js';
+import { carouselModal, carouselSideContainer } from '../utils/carousel.js';
 import { carouselClose, carouselOpen } from '../utils/carousel.js';
 import { formatMediaCarousel } from '../utils/carousel.js';
 
@@ -18,6 +18,7 @@ export const photographerId = getId();
 const ProfilContainer = document.querySelector('.photograph-header');
 const mediaSection = document.querySelector('.media');
 export const filterBtn = document.querySelector('.select-value');
+console.log(filterBtn);
 export const selectOption = document.querySelectorAll('.select-option');
 export const totalLikeContainer = document.getElementById('counterLike');
 const priceContainer = document.getElementById('price');
@@ -168,7 +169,7 @@ init();
 selectOption.forEach((index) => {
   index.addEventListener('click', async () => {
     clearMediasTemplate(mediaSection);
-    clearMediasTemplate(carouselModal);
+    clearMediasTemplate(carouselSideContainer);
     const sortArray = await createArraySort();
     const sorterType = index.attributes['data-value'].value;
     await sorter(sortArray, sorterType);
@@ -184,7 +185,7 @@ selectOption.forEach((index) => {
   index.addEventListener('keydown', async (e) => {
     if (e.code === 'Enter') {
       clearMediasTemplate(mediaSection);
-      clearMediasTemplate(carouselModal);
+      clearMediasTemplate(carouselSideContainer);
       const sortArray = await createArraySort();
       const sorterType = index.attributes['data-value'].value;
       await sorter(sortArray, sorterType);

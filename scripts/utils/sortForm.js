@@ -69,6 +69,7 @@ function ariaSelectedSetValue(selector, boolean) {
 // mouse navigation behavior
 
 filterBtn.addEventListener('click', () => {
+  console.log('test');
   toggleFilterClass(filterBtn);
   toggleFilterClass(selectContainer);
   ariaExpandedSetValue(filterBtn, true);

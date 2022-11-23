@@ -46,9 +46,6 @@ export class VideosCard {
     div.classList.add('lightbox-container');
     div.setAttribute('data-carouselId', `${this._media.id}`);
     const imgCarousel = `
-    <button class="close-carousel">
-           <i class="fa-solid fa-xmark"></i>
-         </button>
          <!-- Next/previous controls -->
         <div class="img-container">
          <video
@@ -61,8 +58,6 @@ export class VideosCard {
           ></video>
          </div>
          <div class="carousel-text">${this._media.title}</div>
-         <a href="#" class="arrow-prev">&#10094;</a>
-         <a href="#" class="arrow-next">&#10095;</a>
       </div>
     `;
     div.innerHTML = imgCarousel;

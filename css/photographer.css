@@ -245,6 +245,9 @@ form input {
 
 .hidden {
   display: none;
+}
+
+.hiddenVisibility {
   visibility: hidden;
 }
 /* ----------- section media -------------- */
@@ -333,6 +336,8 @@ form input {
 
 #lightbox-modal {
   position: fixed;
+  height: 100vh;
+  width: 100vw;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -342,16 +347,21 @@ form input {
   flex-wrap: wrap;
 }
 
+.lightbox-content {
+}
+
 .lightbox-container {
   position: relative;
   height: 100vh;
-  width: 100vw;
   color: var(--color1);
   font-size: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.lightbox-slide-container {
 }
 
 .close-carousel {
@@ -380,6 +390,7 @@ form input {
   top: 50%;
   transform: translateY(-50%);
   left: 5%;
+  font-size: 2rem;
 }
 
 .arrow-next {
@@ -388,6 +399,7 @@ form input {
   top: 50%;
   transform: translateY(-50%);
   right: 5%;
+  font-size: 2rem;
 }
 
 .arrow-prev:hover,

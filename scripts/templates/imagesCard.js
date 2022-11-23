@@ -39,22 +39,25 @@ export class ImagesCard {
 
   createImgCarousel() {
     const div = document.createElement('div');
-    div.classList.add("lightbox-container");
+    div.classList.add('lightbox-container');
     div.setAttribute('data-carouselId', `${this._media.id}`);
     const imgCarousel = `
-    <button class="close-carousel">
-           <i class="fa-solid fa-xmark"></i>
-         </button>
          <!-- Next/previous controls -->
         <div class="img-container">
           <img src="${this._media.media}" alt="${this._media.title}"/>
          </div>
          <div class="carousel-text">${this._media.title}</div>
-         <a href="#" class="arrow-prev">&#10094;</a>
-         <a href="#" class="arrow-next">&#10095;</a>
       </div>
     `;
     div.innerHTML = imgCarousel;
     return div;
   }
+}
+
+{
+  /* <button class="close-carousel">
+           <i class="fa-solid fa-xmark"></i>
+         </button>
+         <a href="#" class="arrow-prev">&#10094;</a>
+         <a href="#" class="arrow-next">&#10095;</a> */
 }

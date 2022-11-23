@@ -2,6 +2,9 @@
 
 //DOM element
 export const carouselModal = document.getElementById('lightbox-modal');
+export const carouselSideContainer = document.querySelector(
+  '.lightbox-slide-container'
+);
 
 // global functions
 
@@ -9,16 +12,16 @@ export const carouselModal = document.getElementById('lightbox-modal');
  * remove class hidden to the carousel DOM element
  */
 function displayLightbox() {
-  carouselModal.classList.remove('hidden');
+  carouselModal.classList.remove('hiddenVisibility');
   document.body.style.overflowY = 'hidden';
-//   document.body.style.overflowX = 'auto';
+  //   document.body.style.overflowX = 'auto';
 }
 
 /**
  * add class hidden to the carousel DOM element
  */
 function closeLightbox() {
-  carouselModal.classList.add('hidden');
+  carouselModal.classList.add('hiddenVisibility');
   //   document.body.style.overflowX = 'hidden';
   document.body.style.overflowY = 'auto';
 }
@@ -30,7 +33,7 @@ function closeLightbox() {
 export async function formatMediaCarousel(array) {
   array.forEach((index) => {
     const media = index.getMediaCarousel();
-    carouselModal.appendChild(media);
+    carouselSideContainer.appendChild(media);
   });
 }
 
@@ -45,7 +48,6 @@ export async function carouselOpen() {
     img.addEventListener('click', () => {
       displayLightbox();
       console.log(img);
-      console.log();
     });
   });
 }
