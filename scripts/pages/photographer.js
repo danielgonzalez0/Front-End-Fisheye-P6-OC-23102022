@@ -9,7 +9,7 @@ import { totalLikeInit } from '../utils/likesForm.js';
 import { totalLikePhotographInit } from '../utils/likesForm.js';
 import { likeMedia } from '../utils/likesForm.js';
 import { sorter } from '../utils/sortFunction.js';
-import { carouselModal, carouselSideContainer } from '../utils/carousel.js';
+import { carouselModal, carouselSideContainer, goToNextSlide, goToPrevSlide } from '../utils/carousel.js';
 import { carouselClose, carouselOpen } from '../utils/carousel.js';
 import { formatMediaCarousel } from '../utils/carousel.js';
 
@@ -148,6 +148,8 @@ async function init() {
   const carouselArray = mediaArray;
   await carouselOpen();
   await formatMediaCarousel(carouselArray);
+  await goToNextSlide();
+  await goToPrevSlide();
   await carouselClose();
 
   //counter like for one photograph
@@ -177,6 +179,8 @@ selectOption.forEach((index) => {
     await likeMedia();
     await formatMediaCarousel(sortArray);
     await carouselOpen();
+    await goToNextSlide();
+    await goToPrevSlide();
     await carouselClose();
   });
 });
@@ -193,6 +197,8 @@ selectOption.forEach((index) => {
       await likeMedia();
       await formatMediaCarousel(sortArray);
       await carouselOpen();
+      await goToNextSlide();
+      await goToPrevSlide();
       await carouselClose();
     }
   });

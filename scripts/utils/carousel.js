@@ -5,6 +5,9 @@ export const carouselModal = document.getElementById('lightbox-modal');
 export const carouselSideContainer = document.querySelector(
   '.lightbox-slide-container'
 );
+const nextSlideBtn = document.querySelector('.arrow-next');
+const prevSlideBtn = document.querySelector('.arrow-prev');
+let currentSlide = 0;
 
 // global functions
 
@@ -34,7 +37,7 @@ export async function formatMediaCarousel(mediaArray) {
   console.log(mediaArray);
   mediaArray.forEach((index) => {
     const media = index.getMediaCarousel();
-    media.setAttribute('data-index', mediaArray.indexOf(index));
+    // media.setAttribute('data-index', mediaArray.indexOf(index));
     carouselSideContainer.appendChild(media);
   });
 }
@@ -43,12 +46,13 @@ export async function formatMediaCarousel(mediaArray) {
  * displays the carousel slide media corresponding to the image clicked by the user
  * @param {HTMLElement} media template media clicked by the user
  * @param {array} mediaArray array of medias used by the carousel
+ * @returns current slide index position
  */
-async function goToSlideWhenCarouselIsOpen(media, mediaArray) {
+async function goToSlideWhenCarouselIsOpen(media) {
   console.log(media.dataset.mediaid);
   console.log(media);
   let mediaIndex = media.dataset.mediaid;
-  mediaArray = carouselSideContainer.children;
+  const mediaArray = carouselSideContainer.children;
   console.log(mediaArray);
   console.log(mediaIndex);
 
@@ -56,13 +60,20 @@ async function goToSlideWhenCarouselIsOpen(media, mediaArray) {
     if (mediaArray[i].dataset.carouselid === mediaIndex) {
       console.log(mediaArray[i]);
       mediaArray[i].classList.remove('hidden');
+      return (currentSlide = i);
     }
   }
 }
 
-async function removeCurrentSlideWhenCarouselIsClosed() {
-  console.log('test');
+/**
+ * close the carousel and add the css class hidden to the current slide
+ */
+async function toggleClassCurrentSlide() {
+  const mediaArray = carouselSideContainer.children;
+  mediaArray[currentSlide].classList.toggle('hidden');
 }
+
+async function next() {}
 
 // event listener
 
@@ -75,6 +86,17 @@ export async function carouselOpen() {
     media.addEventListener('click', () => {
       displayLightbox();
       goToSlideWhenCarouselIsOpen(media);
+      console.log('current slide = ' + currentSlide);
+    });
+  });
+
+  carouselImage.forEach((media) => {
+    media.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter') {
+        displayLightbox();
+        goToSlideWhenCarouselIsOpen(media);
+        console.log('current slide = ' + currentSlide);
+      }
     });
   });
 }
@@ -87,7 +109,37 @@ export function carouselClose() {
   carouselCross.forEach((cross) => {
     cross.addEventListener('click', () => {
       closeLightbox();
-      removeCurrentSlideWhenCarouselIsClosed();
+      toggleClassCurrentSlide();
     });
+  });
+}
+
+/**
+ * go to the next slide and update currentSlide value
+ */
+export async function goToNextSlide() {
+  nextSlideBtn.addEventListener('click', () => {
+    const mediaArray = carouselSideContainer.children;
+    let mediaLength = mediaArray.length;
+    if (currentSlide < mediaLength - 1) {
+      toggleClassCurrentSlide();
+      currentSlide += 1;
+      toggleClassCurrentSlide();
+    }
+  });
+}
+
+/**
+ * go to the previous slide and update currentSlide value
+ */
+export async function goToPrevSlide() {
+  prevSlideBtn.addEventListener('click', () => {
+    const mediaArray = carouselSideContainer.children;
+    let mediaLength = mediaArray.length;
+    if (currentSlide <= mediaLength - 1 && currentSlide > 0) {
+      toggleClassCurrentSlide();
+      currentSlide -= 1;
+      toggleClassCurrentSlide();
+    }
   });
 }

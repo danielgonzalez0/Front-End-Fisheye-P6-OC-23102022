@@ -12,10 +12,8 @@ export class ImagesCard {
     const imageCard = ` 
               <div class="img-container carousel-link" data-mediaId= ${
                 this._media.id
-              }>
-            <img src="${this._media.media}" alt="${
-      this._media.title
-    }" tabindex="0"/>
+              } tabindex="0">
+            <img src="${this._media.media}" alt="${this._media.title}"/>
           </div>
           <div class="text-container">
             <p class="titre">${this._media.title}</p>
