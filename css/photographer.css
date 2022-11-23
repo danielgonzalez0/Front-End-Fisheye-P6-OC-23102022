@@ -353,6 +353,7 @@ form input {
 .lightbox-container {
   position: relative;
   height: 100vh;
+  width: 100vw;
   color: var(--color1);
   font-size: 2rem;
   display: flex;
@@ -361,6 +362,9 @@ form input {
   align-items: center;
 }
 
+.lightbox-container.hidden {
+  display: none;
+}
 .lightbox-slide-container {
 }
 

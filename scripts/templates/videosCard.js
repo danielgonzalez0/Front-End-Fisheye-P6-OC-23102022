@@ -10,7 +10,9 @@ export class VideosCard {
     );
     article.setAttribute('id', `${this._media.id}`);
     const videoCard = ` 
-              <div class="img-container carousel-link">
+              <div class="img-container carousel-link" data-mediaId= ${
+                this._media.id
+              }>
             <video title="${this._media.title}" tabindex="0">
               <source
                 src="${this._media.media}"
@@ -44,6 +46,7 @@ export class VideosCard {
   createVideoCarousel() {
     const div = document.createElement('div');
     div.classList.add('lightbox-container');
+    div.classList.add('hidden');
     div.setAttribute('data-carouselId', `${this._media.id}`);
     const imgCarousel = `
          <!-- Next/previous controls -->

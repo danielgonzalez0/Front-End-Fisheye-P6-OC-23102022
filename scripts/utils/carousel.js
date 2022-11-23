@@ -28,13 +28,40 @@ function closeLightbox() {
 
 /**
  * creates all medias carousel template  and joines them to the DOM
- * @param {array} array created with the photographer medias datas
+ * @param {array} mediaArray created with the photographer medias datas
  */
-export async function formatMediaCarousel(array) {
-  array.forEach((index) => {
+export async function formatMediaCarousel(mediaArray) {
+  console.log(mediaArray);
+  mediaArray.forEach((index) => {
     const media = index.getMediaCarousel();
+    media.setAttribute('data-index', mediaArray.indexOf(index));
     carouselSideContainer.appendChild(media);
   });
+}
+
+/**
+ * displays the carousel slide media corresponding to the image clicked by the user
+ * @param {HTMLElement} media template media clicked by the user
+ * @param {array} mediaArray array of medias used by the carousel
+ */
+async function goToSlideWhenCarouselIsOpen(media, mediaArray) {
+  console.log(media.dataset.mediaid);
+  console.log(media);
+  let mediaIndex = media.dataset.mediaid;
+  mediaArray = carouselSideContainer.children;
+  console.log(mediaArray);
+  console.log(mediaIndex);
+
+  for (let i = 0; i < mediaArray.length; i++) {
+    if (mediaArray[i].dataset.carouselid === mediaIndex) {
+      console.log(mediaArray[i]);
+      mediaArray[i].classList.remove('hidden');
+    }
+  }
+}
+
+async function removeCurrentSlideWhenCarouselIsClosed() {
+  console.log('test');
 }
 
 // event listener
@@ -44,10 +71,10 @@ export async function formatMediaCarousel(array) {
  */
 export async function carouselOpen() {
   const carouselImage = document.querySelectorAll('.carousel-link');
-  carouselImage.forEach((img) => {
-    img.addEventListener('click', () => {
+  carouselImage.forEach((media) => {
+    media.addEventListener('click', () => {
       displayLightbox();
-      console.log(img);
+      goToSlideWhenCarouselIsOpen(media);
     });
   });
 }
@@ -60,6 +87,7 @@ export function carouselClose() {
   carouselCross.forEach((cross) => {
     cross.addEventListener('click', () => {
       closeLightbox();
+      removeCurrentSlideWhenCarouselIsClosed();
     });
   });
 }

@@ -10,7 +10,9 @@ export class ImagesCard {
     );
     article.setAttribute('id', `${this._media.id}`);
     const imageCard = ` 
-              <div class="img-container carousel-link">
+              <div class="img-container carousel-link" data-mediaId= ${
+                this._media.id
+              }>
             <img src="${this._media.media}" alt="${
       this._media.title
     }" tabindex="0"/>
@@ -40,6 +42,7 @@ export class ImagesCard {
   createImgCarousel() {
     const div = document.createElement('div');
     div.classList.add('lightbox-container');
+    div.classList.add('hidden');
     div.setAttribute('data-carouselId', `${this._media.id}`);
     const imgCarousel = `
          <!-- Next/previous controls -->
