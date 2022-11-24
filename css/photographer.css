@@ -12,10 +12,6 @@
   box-sizing: border-box;
 }
 
-#contact_modal {
-  display: none;
-}
-
 .photograph-header {
   background-color: var(--color3);
   height: 300px;
@@ -98,21 +94,50 @@
   border-radius: 5px;
 }
 
+/* ------------ contact modal ---------- */
+
+#contact_modal {
+  position: fixed;
+  top: 0;
+  min-width: 100vw;
+  max-height: 100vh;
+  overflow: auto;
+  background-color: rgba(196, 196, 196, 0.4);
+  z-index: 200;
+}
+
+.flex-center {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+
+}
+
 .modal {
+
   border-radius: 5px;
-  background-color: var(--color2);
+  background-color: #db8876;
   width: 50%;
+  min-width: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 35px;
   margin: auto;
+  /* height: 100%; */
 }
 
 .modal header {
+  display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.contact_btn_close {
+  background: none;
+  border: none;
 }
 
 .modal header img {
@@ -125,11 +150,29 @@
   text-align: center;
 }
 
-form {
-  display: flex;
+.grid-form {
+  display: grid;
   width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas:
+    'i1'
+    'i2'
+    'i3'
+    'i4'
+    'i4';
+}
+
+#firstname-grid {
+  grid-area: i1;
+}
+#lastname-grid {
+  grid-area: i2;
+}
+#email-grid {
+  grid-area: i3;
+}
+#message-grid {
+  grid-area: i4;
 }
 
 form label {
@@ -142,14 +185,30 @@ form div {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
-  margin-bottom: 26px;
 }
 
-form input {
+form input,
+form textarea {
   width: 100%;
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 1.5rem;
+}
+
+label[for='message'] {
+  margin-top: 10px;
+}
+form textarea {
+  resize: none;
+  height: 100%;
+}
+
+#contact_modal .contact_button {
+  position: static;
+  transform: none;
+  align-self: flex-start;
+  margin-top: 26px;
 }
 /* ----------- section filter ------------- */
 .filter-container {
@@ -347,9 +406,6 @@ form input {
   flex-wrap: wrap;
 }
 
-.lightbox-content {
-}
-
 .lightbox-container {
   position: relative;
   height: 100vh;
@@ -364,8 +420,6 @@ form input {
 
 .lightbox-container.hidden {
   display: none;
-}
-.lightbox-slide-container {
 }
 
 .close-carousel {

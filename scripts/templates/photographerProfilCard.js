@@ -12,7 +12,7 @@ export class PhotographerProfilCard {
           <p class="city">${this._photographer.city}, ${this._photographer.country}</p>
           <p class="tagline">${this._photographer.tagline}</p>
         </div>
-        <button class="contact_button" onclick="displayModal()">
+        <button class="contact_button" id="contactBtn">
           Contactez-moi
         </button>
         <img
