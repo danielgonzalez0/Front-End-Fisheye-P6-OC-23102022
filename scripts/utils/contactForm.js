@@ -27,7 +27,6 @@ function closeModal() {
 export async function contactModalEventListener() {
   //modal open
   const contactBtnOpen = document.getElementById('contactBtn');
-  console.log(contactBtn);
   contactBtnOpen.addEventListener('click', () => {
     displayModal();
   });
@@ -35,8 +34,10 @@ export async function contactModalEventListener() {
   contactBtnClose.addEventListener('click', () => {
     closeModal();
   });
-  //modal submit
+  // modal submit
   contactBtnSubmit.addEventListener('click', (e) => {
+    console.log('form submit');
     e.preventDefault();
   });
 }
+

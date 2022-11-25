@@ -54,7 +54,9 @@
               tabindex="0"
               aria-selected="true"
               data-value="popularity"
-            >Popularité</li>
+            >
+              Popularité
+            </li>
             <li
               class="select-option"
               role="option"
@@ -62,7 +64,9 @@
               tabindex="0"
               aria-selected="false"
               data-value="date"
-            >Date</li>
+            >
+              Date
+            </li>
             <li
               class="select-option"
               role="option"
@@ -70,7 +74,9 @@
               tabindex="0"
               aria-selected="false"
               data-value="title"
-            >Titre</li>
+            >
+              Titre
+            </li>
             <i class="fa-solid fa-chevron-up"></i>
           </ul>
         </div>
@@ -93,7 +99,8 @@
           <form class="grid-form">
             <div id="firstname-grid">
               <label for="firstname">Prénom</label>
-              <input type="text" name="firstname" id="firstname" />
+              <input type="text" name="firstname" id="firstname" required />
+              <div class="ckeckMessage"></div>
             </div>
             <div id="lastname-grid">
               <label for="lastname">Nom</label>
@@ -107,10 +114,10 @@
               <label for="message">Votre Message</label>
               <textarea name="message" id="message"></textarea>
             </div>
+            <button type="submit" class="contact_button contact_btn_submit">
+              Envoyer
+            </button>
           </form>
-          <button type="submit" class="contact_button contact_btn_submit">
-            Envoyer
-          </button>
         </div>
       </div>
     </div>
