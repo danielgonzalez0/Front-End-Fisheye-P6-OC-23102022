@@ -6,6 +6,7 @@ import { selectOption } from '../pages/photographer.js';
 //Dom elements
 const selectContainer = document.querySelector('.select-container');
 let filterValue = document.getElementById('valueText');
+let currentValue = filterValue.textContent;
 
 // global functions
 
@@ -33,8 +34,12 @@ function toggleFilterClass(selector) {
  * @param {*} selector corresponds to the DOM element where the filter value is stored
  */
 function addSelectedFilterValue(e, selector) {
-  let newFilterValue = e.target.innerHTML;
-  selector.innerHTML = newFilterValue;
+  let newFilterValue = e.target.textContent;
+  if (newFilterValue.length !== 0) {
+    selector.textContent = newFilterValue;
+    currentValue = newFilterValue;
+  }
+  selector.textContent = currentValue;
 }
 
 /**
@@ -69,7 +74,6 @@ function ariaSelectedSetValue(selector, boolean) {
 // mouse navigation behavior
 
 filterBtn.addEventListener('click', () => {
-  console.log('test');
   toggleFilterClass(filterBtn);
   toggleFilterClass(selectContainer);
   ariaExpandedSetValue(filterBtn, true);

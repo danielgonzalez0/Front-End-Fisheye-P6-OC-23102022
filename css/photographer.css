@@ -97,6 +97,7 @@
 /* ------------ contact modal ---------- */
 
 #contact_modal {
+  display: none;
   position: fixed;
   top: 0;
   min-width: 100vw;
@@ -111,15 +112,14 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
-
 }
 
 .modal {
-
   border-radius: 5px;
   background-color: #db8876;
-  width: 50%;
   min-width: 350px;
+  width: 50%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
