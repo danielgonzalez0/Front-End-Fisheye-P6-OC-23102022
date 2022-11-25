@@ -101,17 +101,18 @@
   position: fixed;
   top: 0;
   min-width: 100vw;
-  max-height: 100vh;
+  height: 100vh;
   overflow: auto;
   background-color: rgba(196, 196, 196, 0.4);
   z-index: 200;
 }
 
 .flex-center {
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .modal {
@@ -119,25 +120,45 @@
   background-color: #db8876;
   min-width: 350px;
   width: 50%;
-  max-width: 600px;
+  max-width: 669px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 35px;
   margin: auto;
-  /* height: 100%; */
+  position: relative;
+  min-height: 80%;
+  
+}
+
+.form-container {
+  width: 100%;
 }
 
 .modal header {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
   width: 100%;
+  line-height: 60px;
 }
 
 .contact_btn_close {
+  position: relative;
+  z-index: 20;
   background: none;
   border: none;
+  width: 45px;
+  height: 45px;
+  margin-top: 12px;
+}
+
+.modal header {
+  margin: 0 0 20px 0;
+  height: 120px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .modal header img {
@@ -145,9 +166,10 @@
 }
 
 .modal header h2 {
-  font-size: 64px;
+  font-size: 54px;
   font-weight: normal;
-  text-align: center;
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 .grid-form {
@@ -185,12 +207,13 @@ form div {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
+  margin-bottom: 10px;
 }
 
 form input,
 form textarea {
   width: 100%;
-  height: 68px;
+  height: 50px;
   border: none;
   border-radius: 5px;
   font-size: 1.5rem;
@@ -210,6 +233,56 @@ form textarea {
   align-self: flex-start;
   margin-top: 26px;
 }
+
+/* -------- css add for error input message ----------- */
+[data-error]::after {
+  content: attr(data-error);
+  font-size: 1rem;
+  color: black;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: right;
+  line-height: 1;
+  opacity: 1;
+  transition: 0.3s;
+}
+[data-error-visible='true']::after {
+  opacity: 1;
+}
+[data-error-visible='true'] {
+  outline: 2px solid red;
+}
+
+.select-hide {
+  display: none;
+}
+
+.success-show {
+  display: grid;
+  grid-template-rows: 85% 15%;
+  text-align: center;
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+  background-color: #db8876;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 51px;
+}
+
+.success-show p {
+  margin: auto 0;
+}
+
+.success-show .formBtnClose {
+  margin: 0 auto;
+}
+
 /* ----------- section filter ------------- */
 .filter-container {
   display: flex;
