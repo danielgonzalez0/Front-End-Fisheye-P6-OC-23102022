@@ -5,9 +5,6 @@ export class VideosCard {
 
   createVideoCard() {
     const article = document.createElement('article');
-    const likeStoreCheck = localStorage.getItem(
-      `${this._media.photographerId}_${this._media.id}`
-    );
     article.setAttribute('id', `${this._media.id}`);
     const videoCard = ` 
               <div class="img-container carousel-link" data-mediaId= ${
@@ -24,17 +21,14 @@ export class VideosCard {
            <div class="text-container">
             <p class="titre">${this._media.title}</p>
             <span class="like" data-likeId= ${this._media.id}
-              >${
-                this._media.likes +
-                (likeStoreCheck ? parseInt(likeStoreCheck) : 0)
-              }
+              >${this._media.likes + (this._media.liked ? 1 : 0)}
               </span>
               <button class="likeBtn" data-mediaId= ${this._media.id}>
               <i class="fa-solid fa-heart likeFull ${
-                likeStoreCheck ? 'active' : ''
+                this._media.liked ? 'active' : ''
               }" data-mediaId= ${this._media.id} aria-label="likes"></i>
               <i class="fa-regular fa-heart likeEmpty ${
-                likeStoreCheck ? '' : 'active'
+                this._media.liked ? '' : 'active'
               }" data-mediaId= ${this._media.id} aria-label="unlike"></i>
               </button>
           </div>

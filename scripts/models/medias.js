@@ -44,6 +44,11 @@ export class Medias {
       this._image ? this._image : this._video
     }`;
   }
+  get liked() {
+    return localStorage.getItem(this._photographerId + '_' + this._id)
+      ? true
+      : false;
+  }
 
   getMediaTemplate() {
     if (this.type === 'image') {

@@ -39,6 +39,7 @@ export async function formatMediaCarousel(mediaArray) {
     const media = index.getMediaCarousel();
     // media.setAttribute('data-index', mediaArray.indexOf(index));
     carouselSideContainer.appendChild(media);
+    // console.log(media);
   });
 }
 
@@ -49,15 +50,14 @@ export async function formatMediaCarousel(mediaArray) {
  * @returns current slide index position
  */
 async function goToSlideWhenCarouselIsOpen(media) {
-  console.log(media.dataset.mediaid);
   console.log(media);
-  let mediaIndex = media.dataset.mediaid;
+  let mediaId = media.dataset.mediaid;
   const mediaArray = carouselSideContainer.children;
   console.log(mediaArray);
-  console.log(mediaIndex);
+  console.log("clicked slide id " + mediaId);
 
   for (let i = 0; i < mediaArray.length; i++) {
-    if (mediaArray[i].dataset.carouselid === mediaIndex) {
+    if (mediaArray[i].dataset.carouselid === mediaId) {
       console.log(mediaArray[i]);
       mediaArray[i].classList.remove('hidden');
       return (currentSlide = i);
@@ -73,7 +73,6 @@ async function toggleClassCurrentSlide() {
   mediaArray[currentSlide].classList.toggle('hidden');
 }
 
-async function next() {}
 
 // event listener
 
@@ -122,9 +121,15 @@ export async function goToNextSlide() {
     const mediaArray = carouselSideContainer.children;
     let mediaLength = mediaArray.length;
     if (currentSlide < mediaLength - 1) {
+       console.log('currentSlide before hidden = ' + currentSlide);
       toggleClassCurrentSlide();
+       console.log('currentSlide after hidden, before display & +1 = ' + currentSlide);
       currentSlide += 1;
+      console.log(
+        'currentSlide after hidden & +1, before display = ' + currentSlide
+      );
       toggleClassCurrentSlide();
+      console.log('currentSlide after display = ' + currentSlide);
     }
   });
 }
@@ -137,9 +142,17 @@ export async function goToPrevSlide() {
     const mediaArray = carouselSideContainer.children;
     let mediaLength = mediaArray.length;
     if (currentSlide <= mediaLength - 1 && currentSlide > 0) {
+      console.log('currentSlide before hidden = ' + currentSlide);
       toggleClassCurrentSlide();
+       console.log(
+         'currentSlide after hidden, before display & -1 = ' + currentSlide
+       );
       currentSlide -= 1;
+            console.log(
+              'currentSlide after hidden & -1, before display = ' + currentSlide
+            );
       toggleClassCurrentSlide();
+      console.log('currentSlide after display = ' + currentSlide);
     }
   });
 }

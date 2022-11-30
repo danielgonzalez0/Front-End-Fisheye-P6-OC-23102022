@@ -183,8 +183,8 @@ selectOption.forEach((index) => {
     await likeMedia();
     await formatMediaCarousel(sortArray);
     await carouselOpen();
-    await goToNextSlide();
-    await goToPrevSlide();
+    // await goToNextSlide();
+    // await goToPrevSlide();
     await carouselClose();
   });
 });
@@ -201,8 +201,8 @@ selectOption.forEach((index) => {
       await likeMedia();
       await formatMediaCarousel(sortArray);
       await carouselOpen();
-      await goToNextSlide();
-      await goToPrevSlide();
+      // await goToNextSlide();
+      // await goToPrevSlide();
       await carouselClose();
     }
   });
