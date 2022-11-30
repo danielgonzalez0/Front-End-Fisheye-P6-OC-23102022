@@ -24,7 +24,7 @@ import {
 //DOM element
 export const photographerId = getId();
 const ProfilContainer = document.querySelector('.photograph-header');
-const mediaSection = document.querySelector('.media');
+export const mediaSection = document.querySelector('.media');
 export const filterBtn = document.querySelector('.select-value');
 console.log(filterBtn);
 export const selectOption = document.querySelectorAll('.select-option');

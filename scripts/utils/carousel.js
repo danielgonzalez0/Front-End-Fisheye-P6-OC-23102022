@@ -1,5 +1,6 @@
 // import
-
+import { mainContainer } from './contactForm.js';
+import { mediaSection } from '../pages/photographer.js';
 //DOM element
 export const carouselModal = document.getElementById('lightbox-modal');
 export const carouselSideContainer = document.querySelector(
@@ -7,6 +8,8 @@ export const carouselSideContainer = document.querySelector(
 );
 const nextSlideBtn = document.querySelector('.arrow-next');
 const prevSlideBtn = document.querySelector('.arrow-prev');
+const closeCarousel = document.querySelector('.close-carousel');
+console.log(closeCarousel);
 let currentSlide = 0;
 
 // global functions
@@ -17,7 +20,8 @@ let currentSlide = 0;
 function displayLightbox() {
   carouselModal.classList.remove('hiddenVisibility');
   document.body.style.overflowY = 'hidden';
-  //   document.body.style.overflowX = 'auto';
+  closeCarousel.focus();
+  mainContainer.setAttribute('inert', '');
 }
 
 /**
@@ -25,8 +29,9 @@ function displayLightbox() {
  */
 function closeLightbox() {
   carouselModal.classList.add('hiddenVisibility');
-  //   document.body.style.overflowX = 'hidden';
   document.body.style.overflowY = 'auto';
+  mainContainer.removeAttribute('inert');
+  console.log('currentSlide when close = ' + currentSlide);
 }
 
 /**
@@ -54,7 +59,7 @@ async function goToSlideWhenCarouselIsOpen(media) {
   let mediaId = media.dataset.mediaid;
   const mediaArray = carouselSideContainer.children;
   console.log(mediaArray);
-  console.log("clicked slide id " + mediaId);
+  console.log('clicked slide id ' + mediaId);
 
   for (let i = 0; i < mediaArray.length; i++) {
     if (mediaArray[i].dataset.carouselid === mediaId) {
@@ -66,13 +71,19 @@ async function goToSlideWhenCarouselIsOpen(media) {
 }
 
 /**
+ * put the focus on the last image viewed when the carousel is closed
+ */
+async function getFocusOnthelastImageWhenCarouselClosed() {
+  mediaSection.children[currentSlide].firstElementChild.focus();
+}
+
+/**
  * close the carousel and add the css class hidden to the current slide
  */
 async function toggleClassCurrentSlide() {
   const mediaArray = carouselSideContainer.children;
   mediaArray[currentSlide].classList.toggle('hidden');
 }
-
 
 // event listener
 
@@ -109,6 +120,7 @@ export function carouselClose() {
     cross.addEventListener('click', () => {
       closeLightbox();
       toggleClassCurrentSlide();
+      getFocusOnthelastImageWhenCarouselClosed();
     });
   });
 }
@@ -121,9 +133,11 @@ export async function goToNextSlide() {
     const mediaArray = carouselSideContainer.children;
     let mediaLength = mediaArray.length;
     if (currentSlide < mediaLength - 1) {
-       console.log('currentSlide before hidden = ' + currentSlide);
+      console.log('currentSlide before hidden = ' + currentSlide);
       toggleClassCurrentSlide();
-       console.log('currentSlide after hidden, before display & +1 = ' + currentSlide);
+      console.log(
+        'currentSlide after hidden, before display & +1 = ' + currentSlide
+      );
       currentSlide += 1;
       console.log(
         'currentSlide after hidden & +1, before display = ' + currentSlide
@@ -144,13 +158,13 @@ export async function goToPrevSlide() {
     if (currentSlide <= mediaLength - 1 && currentSlide > 0) {
       console.log('currentSlide before hidden = ' + currentSlide);
       toggleClassCurrentSlide();
-       console.log(
-         'currentSlide after hidden, before display & -1 = ' + currentSlide
-       );
+      console.log(
+        'currentSlide after hidden, before display & -1 = ' + currentSlide
+      );
       currentSlide -= 1;
-            console.log(
-              'currentSlide after hidden & -1, before display = ' + currentSlide
-            );
+      console.log(
+        'currentSlide after hidden & -1, before display = ' + currentSlide
+      );
       toggleClassCurrentSlide();
       console.log('currentSlide after display = ' + currentSlide);
     }

@@ -1,6 +1,9 @@
 //import
 
 // DOM Element
+export const mainContainer = document.getElementById('main');
+const formModal = document.getElementById('contact_modal');
+const formTitle = document.getElementById('form-title');
 const contactCrossClose = document.querySelector('.contact_btn_close');
 const contactBtnClose = document.querySelector('.formBtnClose');
 const successMessage = document.querySelector('.succes-confirmation');
@@ -12,8 +15,8 @@ const inputFirstName = document.querySelector('#firstname');
 const inputLastName = document.querySelector('#lastname');
 const inputEmail = document.getElementById('email');
 const inputMessage = document.querySelector('#message');
-const formTitle = document.getElementById('form-title');
-console.log(formTitle);
+
+console.log(formModal);
 
 // ----------------------functions-------------------------
 /**
@@ -37,6 +40,11 @@ function validate() {
 function displayModal() {
   const modal = document.getElementById('contact_modal');
   modal.style.display = 'block';
+  //accessibility
+  mainContainer.setAttribute('aria-hidden', 'true');
+  formModal.setAttribute('aria-hidden', 'false');
+  contactCrossClose.focus();
+  mainContainer.setAttribute('inert', '');
 }
 
 /**
@@ -46,6 +54,11 @@ function closeModal() {
   const modal = document.getElementById('contact_modal');
   modal.style.display = 'none';
   successMessage.classList.replace('success-show', 'select-hide');
+  //accessibility
+  mainContainer.setAttribute('aria-hidden', 'false');
+  formModal.setAttribute('aria-hidden', 'true');
+  mainContainer.removeAttribute('inert');
+  document.getElementById('contactBtn').focus();
 }
 // error message display
 
