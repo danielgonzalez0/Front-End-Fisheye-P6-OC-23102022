@@ -34,7 +34,7 @@ function closeLightbox() {
  * @param {array} mediaArray created with the photographer medias datas
  */
 export async function formatMediaCarousel(mediaArray) {
-  console.log(mediaArray);
+  // console.log(mediaArray);
   mediaArray.forEach((index) => {
     const media = index.getMediaCarousel();
     // media.setAttribute('data-index', mediaArray.indexOf(index));

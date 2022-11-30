@@ -9,10 +9,17 @@ import { totalLikeInit } from '../utils/likesForm.js';
 import { totalLikePhotographInit } from '../utils/likesForm.js';
 import { likeMedia } from '../utils/likesForm.js';
 import { sorter } from '../utils/sortFunction.js';
-import { carouselSideContainer, goToNextSlide, goToPrevSlide } from '../utils/carousel.js';
+import {
+  carouselSideContainer,
+  goToNextSlide,
+  goToPrevSlide,
+} from '../utils/carousel.js';
 import { carouselClose, carouselOpen } from '../utils/carousel.js';
 import { formatMediaCarousel } from '../utils/carousel.js';
-import { contactModalEventListener } from '../utils/contactForm.js';
+import {
+  contactModalEventListener,
+  getNamePhotographerIntoContactForm,
+} from '../utils/contactForm.js';
 
 //DOM element
 export const photographerId = getId();
@@ -154,7 +161,8 @@ async function init() {
   await carouselClose();
 
   //init contact modal
-  await contactModalEventListener()
+  await getNamePhotographerIntoContactForm(photographerProfil[0].name);
+  await contactModalEventListener();
 
   //counter like for one photograph
   // console.log('----step1: get photograph id-----');

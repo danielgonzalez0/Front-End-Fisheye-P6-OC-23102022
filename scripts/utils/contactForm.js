@@ -12,8 +12,18 @@ const inputFirstName = document.querySelector('#firstname');
 const inputLastName = document.querySelector('#lastname');
 const inputEmail = document.getElementById('email');
 const inputMessage = document.querySelector('#message');
+const formTitle = document.getElementById('form-title');
+console.log(formTitle);
 
 // ----------------------functions-------------------------
+/**
+ * add the photographer name into the contact form title
+ * @param {string} name photographer's name
+ */
+export async function getNamePhotographerIntoContactForm(name) {
+  formTitle.innerHTML = `Contactez-moi <br /> ${name}`;
+}
+
 /**
  * function validate => show success message on form submit
  */
@@ -157,14 +167,11 @@ function validateForm() {
  * behaviour of contact modal with event listener
  */
 export async function contactModalEventListener() {
-
-
   //modal open
   const contactBtnOpen = document.getElementById('contactBtn');
   contactBtnOpen.addEventListener('click', () => {
     displayModal();
   });
-
 
   //modal close
   contactBtnClose.addEventListener('click', () => {
@@ -174,13 +181,11 @@ export async function contactModalEventListener() {
     closeModal();
   });
 
-
   // modal submit
   contactBtnSubmit.addEventListener('click', (e) => {
     e.preventDefault();
     validateForm();
   });
-
 
   //  on form field focus
   inputFirstName.addEventListener('focus', () => {
