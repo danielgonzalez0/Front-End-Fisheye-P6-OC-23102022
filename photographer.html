@@ -87,7 +87,12 @@
     </main>
 
     <!-- modal section -->
-    <div id="contact_modal" aria-hidden="true" role="dialog">
+    <div
+      id="contact_modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="form-title"
+    >
       <div class="flex-center">
         <div class="modal">
           <div class="succes-confirmation select-hide">
@@ -95,7 +100,12 @@
               Merci pour <br />
               votre message
             </p>
-            <button class="contact_button formBtnClose">Fermer</button>
+            <button
+              class="contact_button formBtnClose"
+              aria-label="Close Contact form"
+            >
+              Fermer
+            </button>
           </div>
           <div class="form-container">
             <header>
@@ -103,7 +113,7 @@
                 Contactez-moi <br />
                 Mimi Keel
               </h2>
-              <button class="contact_btn_close">
+              <button class="contact_btn_close" aria-label="Close Contact form">
                 <img src="assets/icons/close.svg" />
               </button>
             </header>
@@ -124,7 +134,11 @@
                 <label for="message">Votre Message</label>
                 <textarea name="message" id="message" required></textarea>
               </div>
-              <button type="submit" class="contact_button contact_btn_submit">
+              <button
+                type="submit"
+                class="contact_button contact_btn_submit"
+                aria-label="send form"
+              >
                 Envoyer
               </button>
             </form>

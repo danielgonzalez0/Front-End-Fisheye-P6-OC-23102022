@@ -32,6 +32,7 @@ export async function getNamePhotographerIntoContactForm(name) {
  */
 function validate() {
   successMessage.classList.replace('select-hide', 'success-show');
+  contactBtnClose.focus()
 }
 
 /**
@@ -164,10 +165,13 @@ function validateForm() {
     checkInputMessage
   ) {
     // coding post steps process
-    console.log('champ prénom = ' + inputFirstName.value);
-    console.log('champ nom = ' + inputLastName.value);
-    console.log('champ email = ' + inputEmail.value);
-    console.log('champ message = ' + inputMessage.value);
+    let formData = {
+      firstname: inputFirstName.value,
+      lastname: inputLastName.value,
+      email: inputEmail.value,
+      message: inputMessage.value,
+    };
+    console.log(formData);
 
     validate();
     resetInputForm();

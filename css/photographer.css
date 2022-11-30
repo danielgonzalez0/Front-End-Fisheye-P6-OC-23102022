@@ -200,6 +200,7 @@
 form label {
   color: #312e2e;
   font-size: 36px;
+  line-height: 50px;
 }
 
 form div {
@@ -217,6 +218,12 @@ form textarea {
   border: none;
   border-radius: 5px;
   font-size: 1.5rem;
+  padding-left: 10px;
+}
+form input:focus-visible, 
+form textarea:focus-visible {
+  background:var(--color3);
+  color: black;
 }
 
 label[for='message'] {
@@ -234,14 +241,21 @@ form textarea {
   margin-top: 26px;
 }
 
+#contact_modal .contact_button:hover,
+#contact_modal .contact_button:focus-visible{
+  background: var(--color3);
+  color:var(--color1)
+}
+
 /* -------- css add for error input message ----------- */
 [data-error]::after {
   content: attr(data-error);
+  width: 100%;
   font-size: 1rem;
   color: black;
   display: block;
   margin-top: 7px;
-  margin-bottom: 7px;
+  /* margin-bottom: 7px; */
   text-align: right;
   line-height: 1;
   opacity: 1;

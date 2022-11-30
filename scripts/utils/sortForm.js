@@ -121,6 +121,11 @@ selectContainer.addEventListener('keydown', (e) => {
     toggleFilterClass(selectContainer);
     ariaExpandedSetValue(filterBtn, false);
   }
+  if (e.code === 'Escape') {
+    toggleFilterClass(filterBtn);
+    toggleFilterClass(selectContainer);
+    ariaExpandedSetValue(filterBtn, false);
+  }
 });
 
 selectOption.forEach((index) => {

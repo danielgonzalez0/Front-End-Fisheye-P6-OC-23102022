@@ -93,15 +93,19 @@ async function toggleClassCurrentSlide() {
 export async function carouselOpen() {
   const carouselImage = document.querySelectorAll('.carousel-link');
   carouselImage.forEach((media) => {
-    media.addEventListener('click', () => {
-      displayLightbox();
-      goToSlideWhenCarouselIsOpen(media);
-      console.log('current slide = ' + currentSlide);
+    media.addEventListener('click', (e) => {
+      e.preventDefault
+      if (e.type === 'click') {
+        displayLightbox();
+        goToSlideWhenCarouselIsOpen(media);
+        console.log('current slide = ' + currentSlide);
+      }
     });
   });
 
   carouselImage.forEach((media) => {
-    media.addEventListener('keydown', (e) => {
+    media.addEventListener('keyup', (e) => {
+      e.preventDefault;
       if (e.code === 'Enter') {
         displayLightbox();
         goToSlideWhenCarouselIsOpen(media);
@@ -117,10 +121,25 @@ export async function carouselOpen() {
 export function carouselClose() {
   const carouselCross = document.querySelectorAll('.close-carousel');
   carouselCross.forEach((cross) => {
-    cross.addEventListener('click', () => {
+    cross.addEventListener('mousedown', () => {
       closeLightbox();
       toggleClassCurrentSlide();
-      getFocusOnthelastImageWhenCarouselClosed();
+    });
+
+    cross.addEventListener('keyup', (e) => {
+      if (e.code === 'Escape') {
+        closeLightbox();
+        toggleClassCurrentSlide();
+        getFocusOnthelastImageWhenCarouselClosed();
+      }
+    });
+
+    cross.addEventListener('keyup', (e) => {
+      if (e.code === 'Enter') {
+        closeLightbox();
+        toggleClassCurrentSlide();
+        getFocusOnthelastImageWhenCarouselClosed();
+      }
     });
   });
 }
