@@ -157,14 +157,28 @@
     </div>
 
     <!-- ligthbox modal  -->
-    <div id="lightbox-modal" class="hiddenVisibility">
+    <div
+      id="lightbox-modal"
+      class="hiddenVisibility"
+      role="dialog"
+      aria-label="image closeup view"
+      aria-hidden="true"
+    >
       <div class="lightbox-content">
         <div class="lightbox-slide-container"></div>
-        <button class="close-carousel">
+        <button class="close-carousel" aria-label="close carousel">
           <i class="fa-solid fa-xmark"></i>
         </button>
-        <a href="#" class="arrow-prev">&#10094;</a>
-        <a href="#" class="arrow-next">&#10095;</a>
+        <a
+          href="#"
+          class="arrow-prev"
+          role="button"
+          arial-label="previous image"
+          >&#10094;</a
+        >
+        <a href="#" class="arrow-next" role="button" arial-label="next image"
+          >&#10095;</a
+        >
       </div>
     </div>
 

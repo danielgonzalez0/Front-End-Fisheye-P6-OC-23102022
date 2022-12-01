@@ -42,6 +42,7 @@ export class VideosCard {
     div.classList.add('lightbox-container');
     div.classList.add('hidden');
     div.setAttribute('data-carouselId', `${this._media.id}`);
+    div.setAttribute('aria-hidden', 'true');
     const imgCarousel = `
          <!-- Next/previous controls -->
         <div class="img-container">

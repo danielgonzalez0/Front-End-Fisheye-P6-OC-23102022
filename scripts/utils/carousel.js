@@ -19,6 +19,7 @@ let currentSlide = 0;
  */
 function displayLightbox() {
   carouselModal.classList.remove('hiddenVisibility');
+  carouselModal.ariaHidden = false;
   document.body.style.overflowY = 'hidden';
   closeCarousel.focus();
   mainContainer.setAttribute('inert', '');
@@ -29,6 +30,7 @@ function displayLightbox() {
  */
 function closeLightbox() {
   carouselModal.classList.add('hiddenVisibility');
+  carouselModal.ariaHidden = true;
   document.body.style.overflowY = 'auto';
   mainContainer.removeAttribute('inert');
   console.log('currentSlide when close = ' + currentSlide);
@@ -42,7 +44,6 @@ export async function formatMediaCarousel(mediaArray) {
   // console.log(mediaArray);
   mediaArray.forEach((index) => {
     const media = index.getMediaCarousel();
-    // media.setAttribute('data-index', mediaArray.indexOf(index));
     carouselSideContainer.appendChild(media);
     // console.log(media);
   });
@@ -65,6 +66,7 @@ async function goToSlideWhenCarouselIsOpen(media) {
     if (mediaArray[i].dataset.carouselid === mediaId) {
       console.log(mediaArray[i]);
       mediaArray[i].classList.remove('hidden');
+      mediaArray[i].ariaHidden = false;
       return (currentSlide = i);
     }
   }
@@ -78,11 +80,16 @@ async function getFocusOnthelastImageWhenCarouselClosed() {
 }
 
 /**
- * change the class of the current slide between visible or hidden
+ * change the class of the current slide between visible or hidden & change aria-hidden
  */
 async function toggleClassCurrentSlide() {
   const mediaArray = carouselSideContainer.children;
   mediaArray[currentSlide].classList.toggle('hidden');
+  if (mediaArray[currentSlide].className.includes('hidden')) {
+    mediaArray[currentSlide].ariaHidden = true;
+  } else {
+    mediaArray[currentSlide].ariaHidden = false;
+  }
 }
 
 // event listener
@@ -154,12 +161,16 @@ export async function goToNextSlide() {
     console.log('length = ' + mediaLength);
     if (currentSlide < mediaLength - 1) {
       toggleClassCurrentSlide();
+      // mediaArray[currentSlide].ariaHidden = true;
       currentSlide += 1;
       toggleClassCurrentSlide();
+      // mediaArray[currentSlide].ariaHidden = false;
     } else if (currentSlide === mediaLength - 1) {
       toggleClassCurrentSlide();
+      // mediaArray[currentSlide].ariaHidden = true;
       currentSlide = 0;
       toggleClassCurrentSlide();
+      // mediaArray[currentSlide].ariaHidden = false;
     }
   });
 }
