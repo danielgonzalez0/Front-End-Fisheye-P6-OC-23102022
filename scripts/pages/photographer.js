@@ -26,7 +26,6 @@ export const photographerId = getId();
 const ProfilContainer = document.querySelector('.photograph-header');
 export const mediaSection = document.querySelector('.media');
 export const filterBtn = document.querySelector('.select-value');
-console.log(filterBtn);
 export const selectOption = document.querySelectorAll('.select-option');
 export const totalLikeContainer = document.getElementById('counterLike');
 const priceContainer = document.getElementById('price');
@@ -112,6 +111,13 @@ async function formatMediaData(array) {
   });
 }
 
+/**
+ * put the focus on the first element of the media section
+ */
+export async function focusFirstElementInMediaSection() {
+  mediaSection.children[0].firstElementChild.focus();
+}
+
 // ------------  sort functions -------------------
 
 /**
@@ -188,6 +194,7 @@ selectOption.forEach((index) => {
     const sorterType = index.attributes['data-value'].value;
     await sorter(sortArray, sorterType);
     await formatMediaData(sortArray);
+    await focusFirstElementInMediaSection();
     await likeMedia();
     await formatMediaCarousel(sortArray);
     await carouselOpen();
@@ -206,6 +213,7 @@ selectOption.forEach((index) => {
       const sorterType = index.attributes['data-value'].value;
       await sorter(sortArray, sorterType);
       await formatMediaData(sortArray);
+      await focusFirstElementInMediaSection();
       await likeMedia();
       await formatMediaCarousel(sortArray);
       await carouselOpen();

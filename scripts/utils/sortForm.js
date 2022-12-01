@@ -1,6 +1,9 @@
 //import
 // const filterBtn = document.querySelector('.select-value');
-import { filterBtn } from '../pages/photographer.js';
+import {
+  filterBtn,
+  focusFirstElementInMediaSection,
+} from '../pages/photographer.js';
 import { selectOption } from '../pages/photographer.js';
 
 //Dom elements
@@ -73,12 +76,14 @@ function ariaSelectedSetValue(selector, boolean) {
 
 // mouse navigation behavior
 
+//open the select options div
 filterBtn.addEventListener('click', () => {
   toggleFilterClass(filterBtn);
   toggleFilterClass(selectContainer);
   ariaExpandedSetValue(filterBtn, true);
 });
 
+//close select option div & change filter value on filter button
 selectContainer.addEventListener('click', (e) => {
   addSelectedFilterValue(e, filterValue);
   toggleFilterClass(filterBtn);
@@ -86,6 +91,7 @@ selectContainer.addEventListener('click', (e) => {
   ariaExpandedSetValue(filterBtn, false);
 });
 
+//update aria attributes when user click on a option
 selectOption.forEach((index) => {
   index.addEventListener('click', (e) => {
     updateAriaActiveDescendant(e);
@@ -98,36 +104,70 @@ selectOption.forEach((index) => {
 
 // keyboard navigation behaviour
 
-filterBtn.addEventListener('keydown', () => {
-  toggleFilterClass(filterBtn);
-  toggleFilterClass(selectContainer);
-  ariaExpandedSetValue(filterBtn, true);
+//open the select options div
+filterBtn.addEventListener('keydown', (e) => {
+  if (e.code !== 'Escape' && e.code !== 'Enter') {
+    toggleFilterClass(filterBtn);
+    toggleFilterClass(selectContainer);
+    ariaExpandedSetValue(filterBtn, true);
+  }
+  if (e.code === 'Enter') {
+    ariaExpandedSetValue(filterBtn, true);
+    console.log(document.querySelector('.select-list').firstElementChild);
+    setTimeout(() => {
+      document.querySelector('.select-list').firstElementChild.focus();
+    }, 100);
+  }
 });
 
+//close the select options div & focus firt image when user is on the last options & push tab on the keyboard
 const lastIndex = lastArrayIndex(selectOption);
 selectOption[lastIndex].addEventListener('keydown', (e) => {
-  if (e.code === 'Tab') {
+  if (e.code === 'Tab' || e.code === 'ArrowDown') {
     e.preventDefault();
     toggleFilterClass(filterBtn);
     toggleFilterClass(selectContainer);
     ariaExpandedSetValue(filterBtn, false);
+    focusFirstElementInMediaSection();
+  }
+});
+
+//close the select options div & focus firt image when user is on the last options & push tab on the keyboard
+selectOption[0].addEventListener('keydown', (e) => {
+  if (
+    (e.code !== 'Tab' &&
+      e.code !== 'ArrowDown' &&
+      e.code !== 'ShiftLeft' &&
+      e.code !== 'ShiftRight') ||
+    e.code === 'ArrowUp'
+  ) {
+    e.preventDefault();
+    console.log(e.code);
+    toggleFilterClass(filterBtn);
+    toggleFilterClass(selectContainer);
+    ariaExpandedSetValue(filterBtn, false);
+    document.getElementById('contactBtn').focus();
   }
 });
 
 selectContainer.addEventListener('keydown', (e) => {
+  //push enter to close select options div & and change filter value
   if (e.code === 'Enter') {
     addSelectedFilterValue(e, filterValue);
     toggleFilterClass(filterBtn);
     toggleFilterClass(selectContainer);
     ariaExpandedSetValue(filterBtn, false);
   }
+  //push escape to close select options div without change filter value & focus on first image of medias section
   if (e.code === 'Escape') {
     toggleFilterClass(filterBtn);
     toggleFilterClass(selectContainer);
     ariaExpandedSetValue(filterBtn, false);
+    filterBtn.focus();
   }
 });
 
+//for each options if user press enter update the aria attributes
 selectOption.forEach((index) => {
   index.addEventListener('keydown', (e) => {
     if (e.code === 'Enter') {
@@ -136,6 +176,15 @@ selectOption.forEach((index) => {
         ariaSelectedSetValue(i, false);
       });
       ariaSelectedSetValue(index, true);
+    }
+    //navigate in select options with arrows
+    if (e.code === 'ArrowDown') {
+      e.preventDefault();
+      if (index.nextElementSibling) index.nextElementSibling.focus();
+    }
+    if (e.code === 'ArrowUp') {
+      e.preventDefault();
+      if (index.previousElementSibling) index.previousElementSibling.focus();
     }
   });
 });
