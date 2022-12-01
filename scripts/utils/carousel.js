@@ -78,7 +78,7 @@ async function getFocusOnthelastImageWhenCarouselClosed() {
 }
 
 /**
- * close the carousel and add the css class hidden to the current slide
+ * change the class of the current slide between visible or hidden
  */
 async function toggleClassCurrentSlide() {
   const mediaArray = carouselSideContainer.children;
@@ -94,7 +94,7 @@ export async function carouselOpen() {
   const carouselImage = document.querySelectorAll('.carousel-link');
   carouselImage.forEach((media) => {
     media.addEventListener('click', (e) => {
-      e.preventDefault
+      e.preventDefault;
       if (e.type === 'click') {
         displayLightbox();
         goToSlideWhenCarouselIsOpen(media);
@@ -151,18 +151,15 @@ export async function goToNextSlide() {
   nextSlideBtn.addEventListener('click', () => {
     const mediaArray = carouselSideContainer.children;
     let mediaLength = mediaArray.length;
+    console.log('length = ' + mediaLength);
     if (currentSlide < mediaLength - 1) {
-      console.log('currentSlide before hidden = ' + currentSlide);
       toggleClassCurrentSlide();
-      console.log(
-        'currentSlide after hidden, before display & +1 = ' + currentSlide
-      );
       currentSlide += 1;
-      console.log(
-        'currentSlide after hidden & +1, before display = ' + currentSlide
-      );
       toggleClassCurrentSlide();
-      console.log('currentSlide after display = ' + currentSlide);
+    } else if (currentSlide === mediaLength - 1) {
+      toggleClassCurrentSlide();
+      currentSlide = 0;
+      toggleClassCurrentSlide();
     }
   });
 }
@@ -175,17 +172,13 @@ export async function goToPrevSlide() {
     const mediaArray = carouselSideContainer.children;
     let mediaLength = mediaArray.length;
     if (currentSlide <= mediaLength - 1 && currentSlide > 0) {
-      console.log('currentSlide before hidden = ' + currentSlide);
       toggleClassCurrentSlide();
-      console.log(
-        'currentSlide after hidden, before display & -1 = ' + currentSlide
-      );
       currentSlide -= 1;
-      console.log(
-        'currentSlide after hidden & -1, before display = ' + currentSlide
-      );
       toggleClassCurrentSlide();
-      console.log('currentSlide after display = ' + currentSlide);
+    } else if (currentSlide === 0) {
+      toggleClassCurrentSlide();
+      currentSlide = mediaLength - 1;
+      toggleClassCurrentSlide();
     }
   });
 }

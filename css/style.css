@@ -5,10 +5,11 @@
   --color2: #d3573c;
   --color3: #fafafa;
   --color4: #525252;
+  --color5: rgba(0, 81, 255, 0.681)
 }
 
 *:focus-visible {
-  outline: solid 3px rgba(0, 81, 255, 0.681);
+  outline: solid 3px var(--color5);
   background: #db8876;
   color: black;
 }

@@ -129,7 +129,6 @@
   margin: auto;
   position: relative;
   min-height: 80%;
-  
 }
 
 .form-container {
@@ -220,9 +219,9 @@ form textarea {
   font-size: 1.5rem;
   padding-left: 10px;
 }
-form input:focus-visible, 
+form input:focus-visible,
 form textarea:focus-visible {
-  background:var(--color3);
+  background: var(--color3);
   color: black;
 }
 
@@ -242,9 +241,9 @@ form textarea {
 }
 
 #contact_modal .contact_button:hover,
-#contact_modal .contact_button:focus-visible{
+#contact_modal .contact_button:focus-visible {
   background: var(--color3);
-  color:var(--color1)
+  color: var(--color1);
 }
 
 /* -------- css add for error input message ----------- */
@@ -514,47 +513,64 @@ form textarea {
   top: 50px;
   right: 5%;
   color: var(--color1);
-  font-size: 2rem;
-  height: 42px;
-  width: 42px;
+  font-size: 4rem;
+  height: 75px;
+  width: 75px;
   background-color: transparent;
   border: none;
 }
 
-.close-carousel:hover {
-  transform: scale(1.1);
-}
-
-.close-carousel:active {
-  transform: scale(1.3);
-}
-
 .arrow-prev {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--color1);
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 5%;
-  font-size: 2rem;
+  font-size: 4rem;
 }
 
 .arrow-next {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--color1);
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 5%;
-  font-size: 2rem;
+  font-size: 4rem;
 }
 
+.close-carousel:hover,
 .arrow-prev:hover,
 .arrow-next:hover {
-  transform: scale(1.1) translateY(-50%);
+  outline: solid 3px var(--color1);
+  background: var(--color1);
+  color: var(--color3);
 }
 
+.close-carousel:hover {
+  top: 47px;
+}
+.close-carousel:active,
 .arrow-prev:active,
 .arrow-next:active {
-  transform: scale(1.3) translateY(-50%);
+  outline: solid 3px var(--color2);
+  background-color: var(--color2);
+  border: none;
+  color: var(--color3);
+}
+
+.close-carousel:focus-visible,
+.arrow-prev:focus-visible,
+.arrow-next:focus-visible {
+  background: none;
+  color: var(--color4);
 }
 
 .lightbox-container .img-container {
@@ -573,4 +589,6 @@ form textarea {
 .carousel-text {
   width: 75%;
   font-size: 1.5rem;
+  text-align: center;
+  margin-top: 20px;
 }
