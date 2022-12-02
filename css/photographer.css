@@ -237,13 +237,15 @@
 .grid-form {
   display: grid;
   width: 100%;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: 1fr;
   grid-template-areas:
     'i1'
     'i2'
     'i3'
     'i4'
-    'i4';
+    'i4'
+    'btn';
 }
 
 #firstname-grid {
@@ -257,6 +259,9 @@
 }
 #message-grid {
   grid-area: i4;
+}
+#contact_modal .contact_button {
+  grid-area: btn;
 }
 
 form label {
@@ -309,6 +314,51 @@ form textarea {
   color: var(--color1);
 }
 
+@media screen and (max-width: 1200px) {
+  .modal header h2 {
+    font-size: 4vw;
+  }
+}
+@media screen and (max-width: 860px) {
+  .modal {
+    width: 75%;
+  }
+  .modal header h2 {
+    font-size: 6vw;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .form-container {
+    position: relative;
+  }
+  .contact_btn_close {
+    position: absolute;
+    right: 0;
+  }
+  form label,
+  form input,
+  form textarea {
+    font-size: 5vw;
+  }
+}
+@media screen and (max-width: 460px) {
+  #contact_modal {
+    width: 90vw;
+  }
+  .modal {
+    width: 90%;
+  }
+  .modal header h2 {
+    font-size: 8vw;
+  }
+  form label,
+  form input,
+  form textarea {
+    font-size: 7vw;
+  }
+}
+
 /* -------- css add for error input message ----------- */
 [data-error]::after {
   content: attr(data-error);
@@ -335,8 +385,10 @@ form textarea {
 }
 
 .success-show {
-  display: grid;
-  grid-template-rows: 85% 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   vertical-align: middle;
   height: 100%;
@@ -355,8 +407,11 @@ form textarea {
   margin: auto 0;
 }
 
-.success-show .formBtnClose {
-  margin: 0 auto;
+#formBtnClose {
+  position: absolute !important;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%) !important;
 }
 
 /* ----------- section filter ------------- */
