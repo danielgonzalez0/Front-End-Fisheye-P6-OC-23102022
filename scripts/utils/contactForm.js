@@ -110,7 +110,7 @@ function nameValidity(input) {
  * @param {Object} input - the form field to be controlled => must be a email type
  */
 function emailValidity(input) {
-  const regexEmail = /^[\w-\.]+@([\w-]+\.)[\w-]{2,4}$/; // https://regexr.com/3e48o
+  const regexEmail = /^[\w-.]+@([\w-]+\.)[\w-]{2,4}$/; // https://regexr.com/3e48o
   const errorMessage = 'Veuillez entrer une adresse mail valide';
   if (!regexEmail.test(input.value)) {
     addErrorMessage(input, errorMessage);

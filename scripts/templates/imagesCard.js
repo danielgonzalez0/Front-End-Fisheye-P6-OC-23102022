@@ -9,7 +9,7 @@ export class ImagesCard {
     const imageCard = ` 
               <div class="img-container carousel-link" data-mediaId= ${
                 this._media.id
-              } tabindex="0">
+              } tabindex="0" role="button" aria-label="${this._media.title}, close-up view">
             <img src="${this._media.media}" alt="${this._media.title}"/>
           </div>
           <div class="text-container">

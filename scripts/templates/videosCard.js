@@ -10,7 +10,11 @@ export class VideosCard {
               <div class="img-container carousel-link" data-mediaId= ${
                 this._media.id
               }>
-            <video title="${this._media.title}" tabindex="0">
+            <video title="${
+              this._media.title
+            }" tabindex="0" role="button" aria-label="${
+      this._media.title
+    }, close-up view">
               <source
                 src="${this._media.media}"
                 type="video/mp4"
