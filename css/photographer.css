@@ -14,8 +14,17 @@
 
 .photograph-header {
   background-color: var(--color3);
-  height: 300px;
+  min-height: 300px;
   margin: 0 100px;
+}
+@media screen and (max-width: 1090px) {
+  .photograph-header {
+    margin: 0 20px;
+  }
+
+  .photograph-profil h1 {
+    margin: 0;
+  }
 }
 
 .photograph-profil {
@@ -77,6 +86,60 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 860px) {
+  .photograph-header {
+    margin: 0 20px 30px 20px;
+  }
+  .photograph-profil {
+    min-height: 400px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 65% 35%;
+    grid-template-areas:
+      'txt image'
+      'txt btn';
+  }
+  #profil-content {
+    grid-area: txt;
+    padding-top: 20px;
+  }
+
+  .photograph-profil img {
+    grid-area: image;
+    margin: 0 auto;
+  }
+
+  .contact_button {
+    grid-area: btn;
+    position: static;
+    transform: none;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .photograph-profil {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 245px 135px;
+    grid-template-areas:
+      'txt'
+      'image'
+      'btn';
+  }
+  #profil-content {
+    align-items: center;
+  }
+  .photograph-profil h1,
+  .city,
+  .tagline {
+    text-align: center;
+  }
+  .photograph-profil h1 {
+    line-height: normal;
+    font-size: 45px;
+  }
 }
 
 .popinInfo {
@@ -321,6 +384,17 @@ form textarea {
   border: none;
 }
 
+
+@media screen and (max-width: 700px) {
+  .filter-container {
+    flex-direction: column;
+    min-height: 145px;
+  }
+  .label {
+    margin-right: 0;
+  }
+}
+
 /* ----- select container ---- */
 .select-container {
   height: 170px;
@@ -330,7 +404,7 @@ form textarea {
   background: #911c1c;
   position: absolute;
   top: 0;
-  left: 91px;
+  left: 89px;
   z-index: 1;
 }
 .select-list {
@@ -395,6 +469,14 @@ form textarea {
 .hiddenVisibility {
   visibility: hidden;
 }
+@media screen and (max-width: 700px) {
+  .select-container {
+    position: absolute;
+    top: 69px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 /* ----------- section media -------------- */
 .media {
   margin: 0 100px;
@@ -402,6 +484,26 @@ form textarea {
   grid-template-columns: repeat(3, 350px);
   justify-content: space-between;
   border: none;
+}
+
+@media screen and (max-width: 1300px) {
+  .media {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 20px 100px 20px;
+  }
+  .media .text-container {
+    max-width: 350px;
+  }
+  .media .img-container,
+  .media .text-container {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .media {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .media article {
