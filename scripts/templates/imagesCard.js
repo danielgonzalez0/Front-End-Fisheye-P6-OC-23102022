@@ -40,7 +40,7 @@ export class ImagesCard {
     const imgCarousel = `
          <!-- Next/previous controls -->
         <div class="img-container">
-          <img src="${this._media.media}" alt="${this._media.title}"/>
+          <img src="${this._media.media}" alt="${this._media.title}" tabindex="0"/>
          </div>
          <div class="carousel-text">${this._media.title}</div>
       </div>

@@ -1,5 +1,4 @@
 //import
-// const filterBtn = document.querySelector('.select-value');
 import {
   filterBtn,
   focusFirstElementInMediaSection,
@@ -10,6 +9,7 @@ import { selectOption } from '../pages/photographer.js';
 const selectContainer = document.querySelector('.select-container');
 let filterValue = document.getElementById('valueText');
 let currentValue = filterValue.textContent;
+let keydownShifhtPressed = false;
 
 // global functions
 
@@ -106,11 +106,27 @@ selectOption.forEach((index) => {
 
 //open the select options div
 filterBtn.addEventListener('keydown', (e) => {
-  if (e.code !== 'Escape' && e.code !== 'Enter') {
+  console.log('keydownShifhtPressed avant test = ' + keydownShifhtPressed);
+  if (e.keyCode === 16) {
+    keydownShifhtPressed = true;
+  }
+  if (
+    e.code !== 'Escape' &&
+    e.code !== 'Enter' &&
+    e.code === 'Tab' &&
+    keydownShifhtPressed === false
+  ) {
+    console.log(e);
+    console.log('keydownShifhtPressed = ' + keydownShifhtPressed);
     toggleFilterClass(filterBtn);
     toggleFilterClass(selectContainer);
     ariaExpandedSetValue(filterBtn, true);
   }
+
+  if (e.code === 'Tab' && keydownShifhtPressed === true) {
+    keydownShifhtPressed === false;
+  }
+
   if (e.code === 'Enter') {
     ariaExpandedSetValue(filterBtn, true);
     console.log(document.querySelector('.select-list').firstElementChild);
@@ -123,7 +139,13 @@ filterBtn.addEventListener('keydown', (e) => {
 //close the select options div & focus firt image when user is on the last options & push tab on the keyboard
 const lastIndex = lastArrayIndex(selectOption);
 selectOption[lastIndex].addEventListener('keydown', (e) => {
-  if (e.code === 'Tab' || e.code === 'ArrowDown') {
+  if (e.keyCode === 16) {
+    keydownShifhtPressed = true;
+  }
+  if (
+    (e.code === 'Tab' && keydownShifhtPressed === false) ||
+    e.code === 'ArrowDown'
+  ) {
     e.preventDefault();
     toggleFilterClass(filterBtn);
     toggleFilterClass(selectContainer);
@@ -134,11 +156,12 @@ selectOption[lastIndex].addEventListener('keydown', (e) => {
 
 //close the select options div & focus firt image when user is on the last options & push tab on the keyboard
 selectOption[0].addEventListener('keydown', (e) => {
+  if (e.keyCode === 16) {
+    keydownShifhtPressed = true;
+  }
+
   if (
-    (e.code !== 'Tab' &&
-      e.code !== 'ArrowDown' &&
-      e.code !== 'ShiftLeft' &&
-      e.code !== 'ShiftRight') ||
+    (e.code === 'Tab' && keydownShifhtPressed === true) ||
     e.code === 'ArrowUp'
   ) {
     e.preventDefault();
@@ -146,11 +169,17 @@ selectOption[0].addEventListener('keydown', (e) => {
     toggleFilterClass(filterBtn);
     toggleFilterClass(selectContainer);
     ariaExpandedSetValue(filterBtn, false);
+    console.log('keydownShifhtPressed = ' + keydownShifhtPressed);
+    keydownShifhtPressed = false;
+    console.log('keydownShifhtPressed = ' + keydownShifhtPressed);
     document.getElementById('contactBtn').focus();
   }
 });
 
 selectContainer.addEventListener('keydown', (e) => {
+  if (e.keyCode === 16) {
+    keydownShifhtPressed = true;
+  }
   //push enter to close select options div & and change filter value
   if (e.code === 'Enter') {
     addSelectedFilterValue(e, filterValue);

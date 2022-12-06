@@ -111,7 +111,7 @@ export async function carouselOpen() {
   });
 
   carouselImage.forEach((media) => {
-    media.addEventListener('keyup', (e) => {
+    media.addEventListener('keydown', (e) => {
       e.preventDefault;
       if (e.code === 'Enter') {
         displayLightbox();
@@ -133,7 +133,7 @@ export function carouselClose() {
       toggleClassCurrentSlide();
     });
 
-    cross.addEventListener('keyup', (e) => {
+    cross.addEventListener('keydown', (e) => {
       if (e.code === 'Escape') {
         closeLightbox();
         toggleClassCurrentSlide();
@@ -141,7 +141,7 @@ export function carouselClose() {
       }
     });
 
-    cross.addEventListener('keyup', (e) => {
+    cross.addEventListener('keydown', (e) => {
       if (e.code === 'Enter') {
         closeLightbox();
         toggleClassCurrentSlide();

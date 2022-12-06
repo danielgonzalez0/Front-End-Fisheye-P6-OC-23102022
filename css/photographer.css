@@ -88,6 +88,10 @@
   transform: translate(-50%, -50%);
 }
 
+.contact_button:focus-visible {
+  background-color: #db8876;
+}
+
 @media screen and (max-width: 860px) {
   .photograph-header {
     margin: 0 20px 30px 20px;
@@ -166,7 +170,8 @@
   min-width: 100vw;
   height: 100vh;
   overflow: auto;
-  background-color: rgba(196, 196, 196, 0.4);
+  background: #fafafa;
+  /* background-color: rgba(196, 196, 196, 0.4); */
   z-index: 200;
 }
 
@@ -208,7 +213,6 @@
 
 .contact_btn_close {
   position: relative;
-  z-index: 20;
   background: none;
   border: none;
   width: 45px;
@@ -319,9 +323,9 @@ form textarea {
     font-size: 4vw;
   }
 }
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 1000px) {
   .modal {
-    width: 75%;
+    width: 90%;
   }
   .modal header h2 {
     font-size: 6vw;
@@ -329,6 +333,9 @@ form textarea {
 }
 
 @media screen and (max-width: 650px) {
+  .modal {
+    width: 100%;
+  }
   .form-container {
     position: relative;
   }
@@ -345,9 +352,6 @@ form textarea {
 @media screen and (max-width: 460px) {
   #contact_modal {
     width: 90vw;
-  }
-  .modal {
-    width: 90%;
   }
   .modal header h2 {
     font-size: 8vw;
@@ -439,6 +443,10 @@ form textarea {
   border: none;
 }
 
+.select-value:focus-visible {
+  background: #db8876;
+}
+
 @media screen and (max-width: 700px) {
   .filter-container {
     flex-direction: column;
@@ -478,7 +486,8 @@ form textarea {
   transition: 0.3s ease-in-out;
   cursor: pointer;
 }
-.select-option:hover {
+.select-option:hover,
+.select-option:focus-visible {
   background: #db8876;
   color: black;
 }
@@ -666,6 +675,7 @@ form textarea {
 
 .close-carousel {
   position: absolute;
+  z-index: 20;
   top: 50px;
   right: 5%;
   color: var(--color1);
@@ -683,6 +693,7 @@ form textarea {
   justify-content: center;
   color: var(--color1);
   position: absolute;
+  z-index: 20;
   top: 50%;
   transform: translateY(-50%);
   left: 5%;
@@ -696,6 +707,7 @@ form textarea {
   justify-content: center;
   color: var(--color1);
   position: absolute;
+  z-index: 20;
   top: 50%;
   transform: translateY(-50%);
   right: 5%;

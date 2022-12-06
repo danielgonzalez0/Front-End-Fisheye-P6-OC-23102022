@@ -10,7 +10,7 @@
 
 *:focus-visible {
   outline: solid 3px var(--color5);
-  background: #db8876;
+  /* background: #db8876; */
   color: black;
 }
 
@@ -97,9 +97,9 @@ h1 {
   flex-direction: column;
 }
 
-.photographer_section .link-container {
-  width: 100%;
-}
+  /* .photographer_section .link-container {
+    width: 100%; 
+  }  */
 
 .photographer_section h2 {
   color: var(--color2);

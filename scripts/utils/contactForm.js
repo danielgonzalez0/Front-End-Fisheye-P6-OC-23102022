@@ -4,6 +4,7 @@
 export const mainContainer = document.getElementById('main');
 const formModal = document.getElementById('contact_modal');
 const formTitle = document.getElementById('form-title');
+const formContainer = document.querySelector('.form-container');
 const contactCrossClose = document.querySelector('.contact_btn_close');
 const contactBtnClose = document.querySelector('.formBtnClose');
 const successMessage = document.querySelector('.succes-confirmation');
@@ -32,7 +33,8 @@ export async function getNamePhotographerIntoContactForm(name) {
  */
 function validate() {
   successMessage.classList.replace('select-hide', 'success-show');
-  contactBtnClose.focus()
+  formContainer.setAttribute('inert','');
+  contactBtnClose.focus();
 }
 
 /**
@@ -59,6 +61,7 @@ function closeModal() {
   mainContainer.setAttribute('aria-hidden', 'false');
   formModal.setAttribute('aria-hidden', 'true');
   mainContainer.removeAttribute('inert');
+  formContainer.removeAttribute('inert');
   document.getElementById('contactBtn').focus();
 }
 // error message display

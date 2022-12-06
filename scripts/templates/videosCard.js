@@ -55,6 +55,7 @@ export class VideosCard {
                 src="${this._media.media}"
                 type="video/mp4"
                 alt="${this._media.title}"
+                tabindex="0"
                 controls
               />
           ></video>
