@@ -134,6 +134,7 @@ filterBtn.addEventListener('keydown', (e) => {
       document.querySelector('.select-list').firstElementChild.focus();
     }, 100);
   }
+  keydownShifhtPressed === false;
 });
 
 //close the select options div & focus firt image when user is on the last options & push tab on the keyboard
