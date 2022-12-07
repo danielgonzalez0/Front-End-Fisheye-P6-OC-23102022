@@ -123,7 +123,7 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .photograph-profil {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 245px 135px;
@@ -144,6 +144,19 @@
     line-height: normal;
     font-size: 45px;
   }
+
+  .contact_button {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  .photograph-header {
+    margin: 0 0 30px 0;
+  }
+  .photograph-profil {
+    padding: 0;
+  }
 }
 
 .popinInfo {
@@ -159,6 +172,16 @@
   align-items: center;
   font-size: 1.5rem;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 800px) {
+  .popinInfo {
+    width: 300px;
+    height: 75px;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 1.2rem;
+  }
 }
 
 /* ------------ contact modal ---------- */
@@ -447,13 +470,20 @@ form textarea {
   background: #db8876;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .filter-container {
     flex-direction: column;
     min-height: 145px;
   }
   .label {
     margin-right: 0;
+  }
+
+  .select-value {
+    width: 350px;
+  }
+  .select-value span {
+    width: 80%;
   }
 }
 
@@ -532,12 +562,14 @@ form textarea {
 .hiddenVisibility {
   visibility: hidden;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .select-container {
     position: absolute;
     top: 69px;
     left: 50%;
     transform: translateX(-50%);
+    width: 350px;
+    text-align: center;
   }
 }
 /* ----------- section media -------------- */
@@ -566,6 +598,7 @@ form textarea {
 @media screen and (max-width: 800px) {
   .media {
     grid-template-columns: repeat(1, 1fr);
+    margin: 0 0 100px 0;
   }
 }
 
@@ -577,6 +610,7 @@ form textarea {
   width: 350px;
   height: 350px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .media .img-container img,
@@ -616,9 +650,13 @@ form textarea {
   font-size: 20px;
   color: var(--color1);
 }
-
+.likeBtn:hover {
+  outline: solid 3px var(--color1);
+  background-color: white;
+  color: var(--color1);
+}
 .likeBtn:focus-visible {
-  outline: solid 3px rgba(0, 81, 255, 0.681);
+  outline: solid 3px var(--color5);
   background-color: white;
   color: var(--color1);
 }
