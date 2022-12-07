@@ -23,6 +23,7 @@ function displayLightbox() {
   document.body.style.overflowY = 'hidden';
   closeCarousel.focus();
   mainContainer.setAttribute('inert', '');
+  mainContainer.setAttribute('aria-hidden', 'true');
 }
 
 /**
@@ -33,6 +34,7 @@ function closeLightbox() {
   carouselModal.ariaHidden = true;
   document.body.style.overflowY = 'auto';
   mainContainer.removeAttribute('inert');
+  mainContainer.setAttribute('aria-hidden', 'false');
   console.log('currentSlide when close = ' + currentSlide);
 }
 

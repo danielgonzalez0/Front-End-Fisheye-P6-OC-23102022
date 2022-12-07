@@ -9,7 +9,7 @@ import { selectOption } from '../pages/photographer.js';
 const selectContainer = document.querySelector('.select-container');
 let filterValue = document.getElementById('valueText');
 let currentValue = filterValue.textContent;
-let keydownShifhtPressed = false;
+export let keydownShifhtPressed = false;
 
 // global functions
 
@@ -106,10 +106,12 @@ selectOption.forEach((index) => {
 
 //open the select options div
 filterBtn.addEventListener('keydown', (e) => {
+  console.log(e.keyCode);
   console.log('keydownShifhtPressed avant test = ' + keydownShifhtPressed);
   if (e.keyCode === 16) {
     keydownShifhtPressed = true;
   }
+  console.log('keydownShifhtPressed si click shift = ' + keydownShifhtPressed);
   if (
     e.code !== 'Escape' &&
     e.code !== 'Enter' &&
@@ -124,7 +126,7 @@ filterBtn.addEventListener('keydown', (e) => {
   }
 
   if (e.code === 'Tab' && keydownShifhtPressed === true) {
-    keydownShifhtPressed === false;
+    keydownShifhtPressed = false;
   }
 
   if (e.code === 'Enter') {
@@ -134,7 +136,6 @@ filterBtn.addEventListener('keydown', (e) => {
       document.querySelector('.select-list').firstElementChild.focus();
     }, 100);
   }
-  keydownShifhtPressed === false;
 });
 
 //close the select options div & focus firt image when user is on the last options & push tab on the keyboard

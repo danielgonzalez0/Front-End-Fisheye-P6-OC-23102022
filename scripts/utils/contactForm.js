@@ -45,9 +45,9 @@ function displayModal() {
   modal.style.display = 'block';
   //accessibility
   mainContainer.setAttribute('aria-hidden', 'true');
+  mainContainer.setAttribute('inert', '');
   formModal.setAttribute('aria-hidden', 'false');
   contactCrossClose.focus();
-  mainContainer.setAttribute('inert', '');
 }
 
 /**
