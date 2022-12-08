@@ -9,11 +9,13 @@ export class ImagesCard {
     const imageCard = ` 
               <div class="img-container carousel-link" data-mediaId= ${
                 this._media.id
-              } tabindex="0" role="button" aria-label="${this._media.title}, close-up view">
+              } tabindex="0" role="button" aria-label="${
+      this._media.title
+    }, close-up view">
             <img src="${this._media.media}" alt="${this._media.title}"/>
           </div>
           <div class="text-container">
-            <p class="titre">${this._media.title}</p>
+            <h2 class="titre">${this._media.title}</h2>
             <span class="like" data-likeId= ${this._media.id}
               >${this._media.likes + (this._media.liked ? 1 : 0)}
               </span>
@@ -23,7 +25,9 @@ export class ImagesCard {
               }" data-mediaId= ${this._media.id} aria-label="likes"></i>
               <i class="fa-regular fa-heart likeEmpty ${
                 this._media.liked ? '' : 'active'
-              }" data-mediaId= ${this._media.id} aria-label="unlike"></i>
+              }" data-mediaId= ${
+      this._media.id
+    } aria-label="unlikes"></i>
               </button>
           </div>
    `;

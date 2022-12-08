@@ -7,6 +7,7 @@ import { selectOption } from '../pages/photographer.js';
 
 //Dom elements
 const selectContainer = document.querySelector('.select-container');
+const selectList = document.querySelector('.select-list');
 let filterValue = document.getElementById('valueText');
 let currentValue = filterValue.textContent;
 export let keydownShifhtPressed = false;
@@ -51,7 +52,7 @@ function addSelectedFilterValue(e, selector) {
  */
 function updateAriaActiveDescendant(e) {
   let activeDescendantValue = e.target.id;
-  filterBtn.setAttribute('aria-activedescendant', activeDescendantValue);
+  selectList.setAttribute('aria-activedescendant', activeDescendantValue);
 }
 /**
  * accessibility:update the value true or false of the the attribute aria-expended

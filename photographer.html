@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -33,20 +33,24 @@
 
       <!-- filter -->
       <div class="filter-container">
-        <div class="label" aria-label="order by">Trier par</div>
+        <div class="label" id="sortBy" aria-label="order by">Trier par</div>
         <button
           class="select-value visible"
-          role="button"
-          aria-labelledby="order by"
+          aria-labelledby="sortBy"
           aria-haspopup="listbox"
           aria-expanded="false"
-          aria-activedescendant="listbox-1"
         >
           <span class="value-text" id="valueText">Popularité</span>
           <i class="fa-solid fa-chevron-down"></i>
         </button>
         <div class="select-container hidden">
-          <ul class="select-list" tabindex="-1">
+          <ul
+            class="select-list"
+            tabindex="-1"
+            id="owned_listbox"
+            role="listbox"
+            aria-activedescendant="listbox-1"
+          >
             <li
               class="select-option"
               role="option"
@@ -56,6 +60,15 @@
               data-value="popularity"
             >
               Popularité
+              <span>
+                <!-- <i class="fa-solid fa-chevron-up"></i> -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path
+                    d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"
+                  />
+                </svg>
+              </span>
             </li>
             <li
               class="select-option"
@@ -77,13 +90,12 @@
             >
               Titre
             </li>
-            <i class="fa-solid fa-chevron-up"></i>
           </ul>
         </div>
       </div>
 
       <!-- media section -->
-      <section class="media"></section>
+      <div class="media"></div>
     </main>
 
     <!-- modal section -->
@@ -115,7 +127,7 @@
                 Mimi Keel
               </h2>
               <button class="contact_btn_close" aria-label="Close Contact form">
-                <img src="assets/icons/close.svg" />
+                <img src="assets/icons/close.svg" alt="close contact form" />
               </button>
             </header>
             <form class="grid-form">
@@ -169,19 +181,15 @@
         <button class="close-carousel" aria-label="close carousel">
           <i class="fa-solid fa-xmark"></i>
         </button>
-        <button class="arrow-prev" arial-label="previous image">
-          &#10094;
-        </button>
+        <button class="arrow-prev" aria-label="previous image">&#10094;</button>
         <div class="lightbox-slide-container"></div>
-        <button class="arrow-next" arial-label="next image">
-          &#10095;
-        </button>
+        <button class="arrow-next" aria-label="next image">&#10095;</button>
       </div>
     </div>
 
     <!-- javascript -->
-    <script type="module" src="/scripts/pages/photographer.js" defer></script>
-    <script type="module" src="/scripts/utils/sortForm.js" defer></script>
+    <script type="module" src="/scripts/pages/photographer.js"></script>
+    <script type="module" src="/scripts/utils/sortForm.js"></script>
     <!-- <script type="module" src="/scripts/utils/contactForm.js" defer></script> -->
   </body>
 </html>

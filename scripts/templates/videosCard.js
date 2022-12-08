@@ -10,20 +10,17 @@ export class VideosCard {
               <div class="img-container carousel-link" data-mediaId= ${
                 this._media.id
               }>
-            <video title="${
-              this._media.title
-            }" tabindex="0" role="button" aria-label="${
+            <video title="${this._media.title}" tabindex="0" aria-label="${
       this._media.title
     }, close-up view">
               <source
                 src="${this._media.media}"
                 type="video/mp4"
-                alt="${this._media.title}"
               />
             </video>
           </div>
            <div class="text-container">
-            <p class="titre">${this._media.title}</p>
+            <h2 class="titre">${this._media.title}</h2>
             <span class="like" data-likeId= ${this._media.id}
               >${this._media.likes + (this._media.liked ? 1 : 0)}
               </span>
@@ -50,15 +47,12 @@ export class VideosCard {
     const imgCarousel = `
          <!-- Next/previous controls -->
         <div class="img-container">
-         <video
+         <video aria-label="${this._media.title}" tabindex="0" controls>
               <source
                 src="${this._media.media}"
                 type="video/mp4"
-                alt="${this._media.title}"
-                tabindex="0"
-                controls
               />
-          ></video>
+          </video>
          </div>
          <div class="carousel-text">${this._media.title}</div>
       </div>
