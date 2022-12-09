@@ -65,7 +65,7 @@ async function updateLikePhotographerCount(boolean) {
 }
 
 /**
- *function that updates the total of photographer's like & pushes it in HTML 
+ *function that updates the total of photographer's like & pushes it in HTML
  */
 async function totalLikeUpdate() {
   let localStorageCounter = localStorage.getItem(photographerId); //cannot get before initialization
@@ -92,10 +92,10 @@ export async function likeMedia() {
     like.addEventListener('click', (e) => {
       //-----------  variables definion --------------
       //id of an image liked
-      const idImageLiked = `${photographerId}_${e.target.dataset.mediaid}`;
+      const idImageLiked = `${photographerId}_${e.currentTarget.dataset.mediaid}`;
       // like number element
       let likeElement = document.querySelector(
-        `[data-likeid="${e.target.dataset.mediaid}"]`
+        `[data-likeid="${e.currentTarget.dataset.mediaid}"]`
       );
       // number of like of the media liked
       let likeNumber = parseInt(likeElement.outerText);
@@ -106,6 +106,13 @@ export async function likeMedia() {
       //change css style of the like btn
       like.children[0].classList.toggle('active');
       like.children[1].classList.toggle('active');
+      for (let i = 0; i < like.children.length; i++) {
+        if (like.children[i].getAttribute('class').includes('active')) {
+          like.children[i].setAttribute('aria-hidden', false);
+        } else {
+          like.children[i].setAttribute('aria-hidden', true);
+        }
+      }
 
       if (!likeStored) {
         //create like in localStorage and add 1 like in media HTML counter

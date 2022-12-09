@@ -39,7 +39,7 @@ function toggleFilterClass(selector) {
  */
 function addSelectedFilterValue(e, selector) {
   let newFilterValue = e.target.textContent;
-  if (newFilterValue.length !== 0) {
+  if (e.target.tagName !== 'svg' && e.target.tagName !== 'path') {
     selector.textContent = newFilterValue;
     currentValue = newFilterValue;
   }

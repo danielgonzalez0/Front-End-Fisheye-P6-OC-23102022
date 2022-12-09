@@ -517,7 +517,7 @@ form textarea {
   cursor: pointer;
 }
 .select-option:hover,
-.select-option:focus-visible, 
+.select-option:focus-visible,
 .select-option:focus-visible svg {
   background: #db8876;
   color: black;
@@ -615,7 +615,7 @@ form textarea {
 }
 
 .media article h2 {
- font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .media .img-container {
@@ -673,23 +673,28 @@ form textarea {
   color: var(--color1);
 }
 
-.media .text-container i {
+.media .text-container i,
+.media .text-container svg {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
   cursor: pointer;
-  width: 100%;
-  height: 100%;
+  width: 20px;
+  height: 20px;
+  fill: var(--color1);
 }
 
 .likeEmpty,
 .likeFull {
-  position: absolute;
-  top: 5px;
-  right: 0;
   transition: 0.3s ease forwards;
   transform: scale(0);
+  display: none;
 }
 
 .active {
   transform: scale(1);
+  display: block;
 }
 
 /* -------------light-box modal----------------- */

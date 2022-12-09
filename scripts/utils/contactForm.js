@@ -1,7 +1,7 @@
 //import
 
 // DOM Element
-export const mainContainer = document.getElementById('main');
+export const mainContainer = document.querySelector('main');
 const formModal = document.getElementById('contact_modal');
 const formTitle = document.getElementById('form-title');
 const formContainer = document.querySelector('.form-container');
@@ -33,7 +33,7 @@ export async function getNamePhotographerIntoContactForm(name) {
  */
 function validate() {
   successMessage.classList.replace('select-hide', 'success-show');
-  formContainer.setAttribute('inert','');
+  formContainer.setAttribute('inert', '');
   contactBtnClose.focus();
 }
 
