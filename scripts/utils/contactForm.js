@@ -5,7 +5,7 @@ export const mainContainer = document.querySelector('main');
 const formModal = document.getElementById('contact_modal');
 const formTitle = document.getElementById('form-title');
 const formContainer = document.querySelector('.form-container');
-const contactCrossClose = document.querySelector('.contact_btn_close');
+const contactCrossClose = document.querySelectorAll('.contact_btn_close');
 const contactBtnClose = document.querySelector('.formBtnClose');
 const successMessage = document.querySelector('.succes-confirmation');
 const contactBtnSubmit = document.querySelector('.contact_btn_submit');
@@ -16,8 +16,7 @@ const inputFirstName = document.querySelector('#firstname');
 const inputLastName = document.querySelector('#lastname');
 const inputEmail = document.getElementById('email');
 const inputMessage = document.querySelector('#message');
-
-console.log(formModal);
+const contactCrossForm = document.getElementById('contactCrossForm');
 
 // ----------------------functions-------------------------
 /**
@@ -47,7 +46,7 @@ function displayModal() {
   mainContainer.setAttribute('aria-hidden', 'true');
   mainContainer.setAttribute('inert', '');
   formModal.setAttribute('aria-hidden', 'false');
-  contactCrossClose.focus();
+  contactCrossForm.focus();
 }
 
 /**
@@ -73,7 +72,7 @@ function closeModal() {
  */
 function addErrorMessage(field, errorMessage) {
   field.setAttribute('data-error-visible', 'true');
-  field.parentElement.setAttribute('data-error', errorMessage);
+  field.nextElementSibling.textContent = errorMessage;
 }
 /**
  * reset error message of a form field & the variable valid
@@ -81,7 +80,7 @@ function addErrorMessage(field, errorMessage) {
  */
 function removeErrorMessage(field) {
   field.removeAttribute('data-error-visible', 'true');
-  field.parentElement.removeAttribute('data-error');
+  field.nextElementSibling.textContent = '';
 }
 // reset value function
 /**
@@ -100,7 +99,7 @@ function resetInputForm() {
  */
 function nameValidity(input) {
   const regexName = /^[-a-zA-ZÀ-ÿ ']{2,30}$/;
-  const errorMessage = 'Veuillez entrer 2 caractères ou plus pour ce champ.';
+  const errorMessage = 'Veuillez entrer 2 caractères ou plus pour ce champ';
   if (!regexName.test(input.value)) {
     addErrorMessage(input, errorMessage);
     return false;
@@ -197,8 +196,10 @@ export async function contactModalEventListener() {
   contactBtnClose.addEventListener('click', () => {
     closeModal();
   });
-  contactCrossClose.addEventListener('click', () => {
-    closeModal();
+  contactCrossClose.forEach((cross) => {
+    cross.addEventListener('click', () => {
+      closeModal();
+    });
   });
 
   // modal submit

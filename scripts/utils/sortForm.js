@@ -107,20 +107,15 @@ selectOption.forEach((index) => {
 
 //open the select options div
 filterBtn.addEventListener('keydown', (e) => {
-  console.log(e.keyCode);
-  console.log('keydownShifhtPressed avant test = ' + keydownShifhtPressed);
   if (e.keyCode === 16) {
     keydownShifhtPressed = true;
   }
-  console.log('keydownShifhtPressed si click shift = ' + keydownShifhtPressed);
   if (
     e.code !== 'Escape' &&
     e.code !== 'Enter' &&
     e.code === 'Tab' &&
     keydownShifhtPressed === false
   ) {
-    console.log(e);
-    console.log('keydownShifhtPressed = ' + keydownShifhtPressed);
     toggleFilterClass(filterBtn);
     toggleFilterClass(selectContainer);
     ariaExpandedSetValue(filterBtn, true);
@@ -132,7 +127,6 @@ filterBtn.addEventListener('keydown', (e) => {
 
   if (e.code === 'Enter') {
     ariaExpandedSetValue(filterBtn, true);
-    console.log(document.querySelector('.select-list').firstElementChild);
     setTimeout(() => {
       document.querySelector('.select-list').firstElementChild.focus();
     }, 100);
@@ -168,13 +162,10 @@ selectOption[0].addEventListener('keydown', (e) => {
     e.code === 'ArrowUp'
   ) {
     e.preventDefault();
-    console.log(e.code);
     toggleFilterClass(filterBtn);
     toggleFilterClass(selectContainer);
     ariaExpandedSetValue(filterBtn, false);
-    console.log('keydownShifhtPressed = ' + keydownShifhtPressed);
     keydownShifhtPressed = false;
-    console.log('keydownShifhtPressed = ' + keydownShifhtPressed);
     document.getElementById('contactBtn').focus();
   }
 });

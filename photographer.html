@@ -108,14 +108,21 @@
       <div class="flex-center">
         <div class="modal">
           <div class="succes-confirmation select-hide">
-            <p>
+            <button
+              id="contactCrossSuccess"
+              class="contact_btn_close"
+              aria-label="Close Contact form"
+            >
+              <img src="assets/icons/close.svg" alt="close contact form" />
+            </button>
+            <p tabindex="0">
               Merci pour <br />
               votre message
             </p>
             <button
               id="formBtnClose"
               class="contact_button formBtnClose"
-              aria-label="Close Contact form"
+              aria-label="message envoyé avec succès Close Contact form"
             >
               Fermer
             </button>
@@ -126,26 +133,77 @@
                 Contactez-moi <br />
                 Mimi Keel
               </h2>
-              <button class="contact_btn_close" aria-label="Close Contact form">
+              <button
+                id="contactCrossForm"
+                class="contact_btn_close"
+                aria-label="Close Contact form"
+              >
                 <img src="assets/icons/close.svg" alt="close contact form" />
               </button>
             </header>
             <form class="grid-form">
               <div id="firstname-grid">
-                <label for="firstname">Prénom</label>
-                <input type="text" name="firstname" id="firstname" required />
+                <label for="firstname" id="labelFirstname">Prénom</label>
+                <input
+                  type="text"
+                  name="firstname"
+                  id="firstname"
+                  aria-describedby="firstnameError"
+                  required
+                />
+                <p
+                  id="firstnameError"
+                  class="errorMessage"
+                  role="alert"
+                  aria-labelledby="labelFirstname"
+                ></p>
               </div>
               <div id="lastname-grid">
-                <label for="lastname">Nom</label>
-                <input type="text" name="lastname" id="lastname" required />
+                <label for="lastname" id="labelLastname">Nom</label>
+                <input
+                  type="text"
+                  name="lastname"
+                  id="lastname"
+                  aria-describedby="lastnameError"
+                  required
+                />
+                <p
+                  id="lastnameError"
+                  class="errorMessage"
+                  aria-labelledby="labelLastname"
+                  role="alert"
+                ></p>
               </div>
               <div id="email-grid">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" required />
+                <label for="email" id="labelEmail">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  aria-describedby="emailError"
+                  required
+                />
+                <p
+                  id="emailError"
+                  class="errorMessage"
+                  role="alert"
+                  aria-labelledby="labelEmail"
+                ></p>
               </div>
               <div id="message-grid">
-                <label for="message">Votre Message</label>
-                <textarea name="message" id="message" required></textarea>
+                <label for="message" id="labelMessage">Votre Message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  aria-describedby="MessageError"
+                  required
+                ></textarea>
+                <p
+                  id="MessageError"
+                  class="errorMessage"
+                  role="alert"
+                  aria-labelledby="labelMessage"
+                ></p>
               </div>
               <button
                 type="submit"

@@ -12,12 +12,15 @@ export class ImagesCard {
               } tabindex="0" role="button" aria-label="${
       this._media.title
     }, close-up view">
-            <img src="${this._media.media}" alt="${this._media.title}"/>
+            <img src="${this._media.media}" alt="le titre de l'image est: ${
+      this._media.title
+    }" data-date="${this._media.date}"/>
           </div>
           <div class="text-container">
-            <h2 class="titre">${this._media.title}</h2>
-            <span class="like" data-likeId= ${this._media.id}
-              >${this._media.likes + (this._media.liked ? 1 : 0)}
+            <h2 class="titre" tabindex="0">${this._media.title}</h2>
+            <span class="like" data-likeId= ${this._media.id}>${
+      this._media.likes + (this._media.liked ? 1 : 0)
+    }
               </span>
               <button class="likeBtn" data-mediaId= ${this._media.id}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="likeFull ${
@@ -42,7 +45,6 @@ export class ImagesCard {
     return article;
   }
 
-
   createImgCarousel() {
     const div = document.createElement('div');
     div.classList.add('lightbox-container');
@@ -52,7 +54,7 @@ export class ImagesCard {
     const imgCarousel = `
          <!-- Next/previous controls -->
         <div class="img-container">
-          <img src="${this._media.media}" alt="${this._media.title}" tabindex="0"/>
+          <img src="${this._media.media}" alt="le titre de l'image est: ${this._media.title}" tabindex="0"/>
          </div>
          <div class="carousel-text">${this._media.title}</div>
       </div>

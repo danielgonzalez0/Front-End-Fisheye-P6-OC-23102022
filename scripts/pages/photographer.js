@@ -224,4 +224,4 @@ selectOption.forEach((index) => {
   });
 });
 
-console.log(mediaSection);
+

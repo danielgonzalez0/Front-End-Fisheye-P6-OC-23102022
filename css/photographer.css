@@ -387,18 +387,27 @@ form textarea {
 }
 
 /* -------- css add for error input message ----------- */
-[data-error]::after {
+/* [data-error]::after {
   content: attr(data-error);
   width: 100%;
   font-size: 1rem;
   color: black;
   display: block;
   margin-top: 7px;
-  /* margin-bottom: 7px; */
   text-align: right;
   line-height: 1;
   opacity: 1;
   transition: 0.3s;
+} */
+
+.errorMessage{
+   width: 100%;
+  font-size: 1rem;
+  text-align: right;
+  line-height: 1;
+  opacity: 1;
+  transition: 0.3s;
+  padding-top: 10px;
 }
 [data-error-visible='true']::after {
   opacity: 1;
@@ -432,6 +441,12 @@ form textarea {
 
 .success-show p {
   margin: auto 0;
+}
+
+#contactCrossSuccess{
+  position: absolute;
+  top: 34px;
+  right: 35px;
 }
 
 #formBtnClose {

@@ -9,7 +9,6 @@ export const carouselSideContainer = document.querySelector(
 const nextSlideBtn = document.querySelector('.arrow-next');
 const prevSlideBtn = document.querySelector('.arrow-prev');
 const closeCarousel = document.querySelector('.close-carousel');
-console.log(closeCarousel);
 let currentSlide = 0;
 
 // global functions
@@ -35,7 +34,7 @@ function closeLightbox() {
   document.body.style.overflowY = 'auto';
   mainContainer.removeAttribute('inert');
   mainContainer.setAttribute('aria-hidden', 'false');
-  console.log('currentSlide when close = ' + currentSlide);
+ 
 }
 
 /**
@@ -43,11 +42,9 @@ function closeLightbox() {
  * @param {array} mediaArray created with the photographer medias datas
  */
 export async function formatMediaCarousel(mediaArray) {
-  // console.log(mediaArray);
   mediaArray.forEach((index) => {
     const media = index.getMediaCarousel();
     carouselSideContainer.appendChild(media);
-    // console.log(media);
   });
 }
 
@@ -58,15 +55,11 @@ export async function formatMediaCarousel(mediaArray) {
  * @returns current slide index position
  */
 async function goToSlideWhenCarouselIsOpen(media) {
-  console.log(media);
   let mediaId = media.dataset.mediaid;
   const mediaArray = carouselSideContainer.children;
-  console.log(mediaArray);
-  console.log('clicked slide id ' + mediaId);
 
   for (let i = 0; i < mediaArray.length; i++) {
     if (mediaArray[i].dataset.carouselid === mediaId) {
-      console.log(mediaArray[i]);
       mediaArray[i].classList.remove('hidden');
       mediaArray[i].ariaHidden = false;
       return (currentSlide = i);
@@ -107,7 +100,6 @@ export async function carouselOpen() {
       if (e.type === 'click') {
         displayLightbox();
         goToSlideWhenCarouselIsOpen(media);
-        console.log('current slide = ' + currentSlide);
       }
     });
   });
@@ -118,7 +110,6 @@ export async function carouselOpen() {
       if (e.code === 'Enter') {
         displayLightbox();
         goToSlideWhenCarouselIsOpen(media);
-        console.log('current slide = ' + currentSlide);
       }
     });
   });
@@ -160,7 +151,6 @@ export async function goToNextSlide() {
   nextSlideBtn.addEventListener('click', () => {
     const mediaArray = carouselSideContainer.children;
     let mediaLength = mediaArray.length;
-    console.log('length = ' + mediaLength);
     if (currentSlide < mediaLength - 1) {
       toggleClassCurrentSlide();
       // mediaArray[currentSlide].ariaHidden = true;

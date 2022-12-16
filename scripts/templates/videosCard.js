@@ -12,7 +12,7 @@ export class VideosCard {
               }>
             <video title="${this._media.title}" tabindex="0" aria-label="${
       this._media.title
-    }, close-up view">
+    }, close-up view" data-date="${this._media.date}">
               <source
                 src="${this._media.media}"
                 type="video/mp4"
@@ -56,7 +56,7 @@ export class VideosCard {
     const imgCarousel = `
          <!-- Next/previous controls -->
         <div class="img-container">
-         <video aria-label="${this._media.title}" tabindex="0" controls>
+         <video aria-label="le titre de la video est: ${this._media.title}" tabindex="0" controls>
               <source
                 src="${this._media.media}"
                 type="video/mp4"
