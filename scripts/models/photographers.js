@@ -1,5 +1,5 @@
 export class Photographers {
-  // ajout constuctor
+  // ajout constructor
   constructor(data) {
     this._name = data.name;
     this._id = data.id;

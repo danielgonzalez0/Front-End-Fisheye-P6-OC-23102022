@@ -50,6 +50,7 @@ export async function formatMediaCarousel(mediaArray) {
 
 /**
  * displays the carousel slide media corresponding to the image clicked by the user
+ * 
  * @param {HTMLElement} media template media clicked by the user
  * @param {array} mediaArray array of medias used by the carousel
  * @returns current slide index position

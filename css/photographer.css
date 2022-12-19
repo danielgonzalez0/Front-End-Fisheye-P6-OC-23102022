@@ -597,7 +597,7 @@ form textarea {
 }
 /* ----------- section media -------------- */
 .media {
-  margin: 0 100px;
+  margin: 0 100px 100px 100px;
   display: grid;
   grid-template-columns: repeat(3, 350px);
   justify-content: space-between;
